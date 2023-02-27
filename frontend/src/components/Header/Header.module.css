@@ -1,0 +1,128 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 0;
+    align-items: center;
+    position: relative;
+    z-index: 3;
+    background-color: #fff;
+}
+
+.header a {
+    color: black;
+}
+
+.logo {
+    font-size: var(--h1-font-size);
+    font-weight: bold;
+
+}
+
+.logo a {
+    background: var(--main-color);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+.links {
+    display: flex;
+}
+
+.links a {
+    margin-right: 2rem;
+    color: var(--text-color);
+    font-size: var(--h3-font-size);
+}
+
+.personal {
+    font-weight: 400;
+    font-size: 1.7rem;
+    display: flex;
+}
+
+.personal a {
+    margin-right: 2rem;
+    color: var(--text-color);
+
+}
+
+.personal a svg {
+    margin-left: 0.3rem;
+
+}
+
+.cart {
+    position: relative;
+    display: inline;
+}
+
+.num {
+    width: 25px;
+    height: 25px;
+    background: var(--main-color);
+    position: absolute;
+    border-radius: 50%;
+    text-align: center;
+    color: white;
+    font-weight: 600;
+    font-size: var(--normal-font-size);
+    line-height: -1px;
+    top: -2px;
+    right: -12px;
+}
+
+.menuIcon {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.menu {
+    position: absolute;
+    bottom: -0;
+    left: 0;
+    background-color: #ebebeb;
+    width: 100%;
+    border-radius: 4px;
+    padding: 0.7rem;
+    z-index: -1;
+}
+
+.menu li {
+    margin-top: 0.7rem;
+    transition: 0.2s;
+}
+
+
+.menu li:hover {
+    transform: translateX(3px);
+}
+
+.show {
+    bottom: -170px;
+
+}
+
+/*=============== BREAKPOINTS ===============*/
+
+/* For medium devices */
+@media screen and (max-width: 768px) {
+    .header>.personal {
+        display: none;
+    }
+
+    .links {
+        display: none;
+    }
+
+    .menuIcon {
+        display: block;
+    }
+
+    .menu>.personal {
+        justify-content: center;
+        margin-top: 1rem;
+        font-size: 1.4rem;
+    }
+
+}

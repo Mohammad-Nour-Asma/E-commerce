@@ -1,0 +1,50 @@
+.landing {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.images {
+    flex-basis: 50%;
+    position: relative;
+}
+
+.images img:first-child {
+    max-width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    height: 500px;
+    display: block;
+    border-radius: 5px;
+}
+
+.images img:last-child {
+    position: absolute;
+    width: 200px;
+    border-radius: 5px;
+    bottom: 0;
+    left: -100px;
+}
+
+
+.info {
+    flex: 1;
+    flex-basis: 50%;
+
+}
+
+.info p {
+    font-size: var(--h3-font-size);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 992px) {
+    .images {
+        display: none;
+    }
+
+    .info {
+        margin: 4rem;
+    }
+}

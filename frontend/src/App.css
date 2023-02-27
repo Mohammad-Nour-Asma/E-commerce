@@ -1,5 +1,5 @@
 /*=============== GOOGLE FONTS ===============*/
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
 
 /*=============== VARIABLES CSS ===============*/
 :root {
@@ -77,13 +77,14 @@ textarea {
 
 body {
   background-color: #fff;
-  color: var(--text-color);
+  /* color: var(--text-color); */
+  font-family: 'Oswald', sans-serif;
 }
 
 h1,
 h2,
 h3 {
-  color: var(--title-color);
+
   font-weight: var(--font-semi-bold);
 }
 
@@ -142,16 +143,21 @@ img {
 /*=============== BUTTONS ===============*/
 .button {
   display: inline-block;
-  background-color: var(--main-color);
+  background: var(--main-color);
   color: #fff;
-  padding: 0.75rem 1.5rem;
+  padding: 0.6rem 1.75rem;
   border-radius: 1rem;
   font-weight: var(--font-medium);
+  transition: .2s;
+  letter-spacing: 2px;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
 }
 
 .button:hover {
-  background-color: #fff;
-  color: var(--main-color);
+
+  color: var(--text-color);
+
 }
 
 
@@ -171,7 +177,7 @@ img {
   }
 
   .button {
-    padding: 1rem 1.75rem;
+    /* padding: 1rem 1.75rem; */
   }
 
 
