@@ -1,0 +1,34 @@
+.feat {
+    background-color: #f1f5f8;
+}
+
+.title {
+    text-align: center;
+    font-size: var(--big-font-size);
+    color: #102a42;
+    margin: 2rem 0 4rem;
+    position: relative;
+}
+
+.title::before {
+    content: '';
+    height: 8px;
+    width: 10%;
+    position: absolute;
+    background: var(--main-color);
+
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.boxes {
+    display: flex;
+    justify-content: space-between;
+    gap: 5rem;
+    /* flex-wrap: wrap; */
+}
+
+.feat img {
+    max-width: 100%;
+}

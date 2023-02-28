@@ -1,11 +1,23 @@
 .header {
+
+
+    align-items: center;
+    background-color: red;
+    position: relative;
+
+}
+
+.header>div:first-child {
+    padding: 0.8rem 0;
     display: flex;
     justify-content: space-between;
-    padding: 0.8rem 0;
-    align-items: center;
+    background-color: #fff;
     position: relative;
     z-index: 3;
-    background-color: #fff;
+}
+
+.header>div button {
+    background-color: white;
 }
 
 .header a {
@@ -79,13 +91,15 @@
 
 .menu {
     position: absolute;
-    bottom: -0;
+    transition: .5s ease-in-out;
     left: 0;
     background-color: #ebebeb;
     width: 100%;
     border-radius: 4px;
     padding: 0.7rem;
-    z-index: -1;
+    z-index: 2;
+    bottom: 90px;
+
 }
 
 .menu li {
@@ -107,7 +121,7 @@
 
 /* For medium devices */
 @media screen and (max-width: 768px) {
-    .header>.personal {
+    .header>div:first-child>.personal {
         display: none;
     }
 
