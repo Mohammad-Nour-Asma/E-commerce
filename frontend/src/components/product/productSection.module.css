@@ -32,3 +32,38 @@
 .feat img {
     max-width: 100%;
 }
+
+.feat a {
+    text-align: center;
+    display: block;
+    margin: 2rem auto;
+    width: fit-content;
+}
+
+.toProduct {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to left, rgba(111, 113, 205, 0.35) 0%, rgba(70, 72, 159, 0.35) 61%);
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.toProduct:hover {
+    opacity: 1;
+}
+
+
+.toProduct a {
+    color: #102a42;
+}
+
+.productLayout {
+    position: relative;
+}

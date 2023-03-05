@@ -141,11 +141,10 @@ img {
 }
 
 /*=============== BUTTONS ===============*/
-.button {
+.button, .sub-button {
   display: inline-block;
   background: var(--main-color);
   color: #fff;
-  padding: 0.6rem 1.75rem;
   border-radius: 1rem;
   font-weight: var(--font-medium);
   transition: .2s;
@@ -154,16 +153,21 @@ img {
   font-size: var(--normal-font-size);
 }
 
-.button:hover {
+.button:hover,
+.sub-button:hover {
 
   color: var(--text-color);
 
 }
 
+.button {
+  padding: 0.6rem 1.75rem;
 
-.button--flex {
-  display: inline-flex;
-  align-items: center;
+}
+
+.sub-button {
+
+  padding: 0.2rem 1.2rem;
 }
 
 

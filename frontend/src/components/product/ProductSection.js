@@ -20,7 +20,9 @@ const ProductSection = () => {
             );
           })}
         </div>
-        <button className="button">ALL PRODUCTS</button>
+        <a href="/product" className="sub-button">
+          ALL PRODUCTS
+        </a>
       </div>
     </section>
   );
