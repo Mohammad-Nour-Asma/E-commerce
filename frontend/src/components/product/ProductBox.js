@@ -14,7 +14,7 @@ const ProductBox = (props) => {
           </Link>
         </div>
       </div>
-      <div>
+      <div className={styles.productInfo}>
         <h4>{props.title}</h4>
         <span>${props.price}</span>
       </div>

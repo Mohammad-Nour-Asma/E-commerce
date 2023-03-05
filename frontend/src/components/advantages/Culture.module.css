@@ -1,0 +1,54 @@
+.cultrue {
+    background: linear-gradient(to left, rgba(111, 113, 205, 0.35) 0%, rgba(70, 72, 159, 0.35) 90%);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header p:first-child {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #000158;
+    flex-basis: 50%;
+}
+
+.header p:last-child {
+    font-size: 1.2rem;
+
+
+    flex-basis: 50%;
+}
+
+.boxes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 3rem;
+    gap: 2rem;
+}
+
+.box {
+    padding: 1.5rem;
+    background: linear-gradient(to left, rgba(111, 113, 205, 0.65) 0%, rgba(70, 72, 159, 0.65) 90%);
+    border-radius: 10px;
+}
+
+.box svg {
+    font-size: 4rem;
+}
+
+.box span {
+    font-size: 2rem;
+    font-weight: 500;
+    color: #1c1c33;
+}
+
+@media screen and (max-width: 768px) {
+    .boxes {
+        flex-wrap: wrap;
+    }
+}

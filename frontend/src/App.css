@@ -130,7 +130,9 @@ img {
 
 /*=============== LAYOUT ===============*/
 .container {
-  max-width: 968px;
+
+  padding-left: 15px;
+  padding-right: 15px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -173,12 +175,37 @@ img {
 
 
 /*=============== BREAKPOINTS ===============*/
+
+
+@media (min-width :768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+
+/* Medium */
+
+@media (min-width :992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+
+/* Larg */
+
+@media (min-width :1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+
+
 /* For large devices */
 @media screen and (max-width: 992px) {
-  .container {
-    margin-left: var(--mb-1-5);
-    margin-right: var(--mb-1-5);
-  }
+
 
   .button {
     /* padding: 1rem 1.75rem; */
@@ -189,6 +216,8 @@ img {
 
 /* For medium devices */
 @media screen and (max-width: 768px) {
+
+
   :root {
     --big-font-size: 2.2rem;
   }
@@ -214,8 +243,5 @@ img {
     --big-font-size: 2.0rem;
   }
 
-  .container {
-    margin-left: var(--mb-1);
-    margin-right: var(--mb-1);
-  }
+
 }
