@@ -6,9 +6,9 @@ import About from "./pages/About/About";
 import Cart from "./pages/Cart/Cart";
 import Details from "./pages/Details";
 import Home from "./pages/Home";
-import Login from "./pages/Login";
+import Login from "./pages/Products/Login & Register/Login";
 import Products from "./pages/Products/Products";
-import Register from "./pages/Register";
+import Register from "./pages/Products/Login & Register/Register";
 
 function App() {
   return (
