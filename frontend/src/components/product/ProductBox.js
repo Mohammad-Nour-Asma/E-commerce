@@ -4,10 +4,11 @@ import styles from "./productSection.module.css";
 import { IoSearchCircleSharp } from "react-icons/io5";
 
 const ProductBox = (props) => {
+  console.log(props.item);
   return (
     <div className={styles.box}>
       <div className={styles.productLayout}>
-        <img src={props.image} alt="mobile" />
+        <img className={styles.image} src={props.item.image} alt="mobile" />
         <div className={styles.toProduct}>
           <Link to={"/"}>
             <IoSearchCircleSharp />
@@ -15,8 +16,8 @@ const ProductBox = (props) => {
         </div>
       </div>
       <div className={styles.productInfo}>
-        <h4>{props.title}</h4>
-        <span>${props.price}</span>
+        <h4>{props.item.title}</h4>
+        <span>${props.item.price}</span>
       </div>
     </div>
   );

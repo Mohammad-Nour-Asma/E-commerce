@@ -1,12 +1,13 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
+import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
-import About from "./pages/About";
+import About from "./pages/About/About";
 import Cart from "./pages/Cart";
 import Details from "./pages/Details";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Products from "./pages/Products";
+import Products from "./pages/Products/Products";
 import Register from "./pages/Register";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/register" element={<Register />} />
       </Routes>
+      <Footer />
     </>
   );
 }

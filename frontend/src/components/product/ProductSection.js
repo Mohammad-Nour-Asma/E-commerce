@@ -10,14 +10,7 @@ const ProductSection = () => {
       <div className="container">
         <div className={styles.boxes}>
           {data.map((item) => {
-            return (
-              <ProductBox
-                key={item.id}
-                image={item.image}
-                title={item.title}
-                price={item.price}
-              />
-            );
+            return <ProductBox key={item.id} item={item} />;
           })}
         </div>
         <a href="/product" className="sub-button">

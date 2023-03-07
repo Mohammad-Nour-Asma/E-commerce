@@ -51,8 +51,12 @@ const Header = () => {
           <GoThreeBars />
         </button>
       </div>
-      <div className={showMenu ? `${styles.menu} ${styles.show}` : styles.menu}>
-        <Menu />
+      <div className="container">
+        <div
+          className={showMenu ? `${styles.menu}  ${styles.show}` : styles.menu}
+        >
+          <Menu />
+        </div>
       </div>
     </div>
   );

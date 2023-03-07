@@ -8,6 +8,7 @@
   /*========== Colors ==========*/
   --main-color: linear-gradient(to left, rgba(111, 113, 205, 0.95) 0%, rgba(70, 72, 159, 0.95) 90%);
   --text-color: #2B2C41;
+  --sec-color: #000158;
   /*========== Font and typography ==========*/
   --body-font: "Poppins", sans-serif;
 
@@ -73,6 +74,7 @@ input,
 textarea {
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
+
 }
 
 body {
@@ -129,13 +131,7 @@ img {
 }
 
 /*=============== LAYOUT ===============*/
-.container {
 
-  padding-left: 15px;
-  padding-right: 15px;
-  margin-left: auto;
-  margin-right: auto;
-}
 
 .grid {
   display: grid;
@@ -177,9 +173,33 @@ img {
 /*=============== BREAKPOINTS ===============*/
 
 
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+
+
+}
+
+
+/* Small */
+
+
+
+@media (min-width :576px) {
+  .container {
+    width: 540px;
+
+
+  }
+}
+
 @media (min-width :768px) {
   .container {
     width: 750px;
+
+
   }
 }
 
@@ -189,6 +209,8 @@ img {
 @media (min-width :992px) {
   .container {
     width: 970px;
+
+
   }
 }
 
@@ -198,10 +220,16 @@ img {
 @media (min-width :1200px) {
   .container {
     width: 1170px;
+
+
   }
 }
 
-
+@media (max-width :576px) {
+  .container {
+    max-width: 100%;
+  }
+}
 
 /* For large devices */
 @media screen and (max-width: 992px) {
