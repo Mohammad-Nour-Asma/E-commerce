@@ -2,6 +2,7 @@ import React from "react";
 import ProductBox from "./ProductBox";
 import styles from "./productSection.module.css";
 import { data } from "./productdata";
+import { Link } from "react-router-dom";
 
 const ProductSection = () => {
   return (
@@ -13,9 +14,9 @@ const ProductSection = () => {
             return <ProductBox key={item.id} item={item} />;
           })}
         </div>
-        <a href="/product" className="sub-button">
+        <Link to="/products" className="sub-button">
           ALL PRODUCTS
-        </a>
+        </Link>
       </div>
     </section>
   );

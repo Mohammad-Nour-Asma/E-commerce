@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Cart.module.css";
 import { FaTrash } from "react-icons/fa";
-import { HiPlus } from "react-icons/hi";
+import IncDec from "./IncDec";
 
 const CartItem = ({ item }) => {
   return (
@@ -14,15 +14,7 @@ const CartItem = ({ item }) => {
         </span>
       </div>
       <span className={styles.price}>${item.price}</span>
-      <div className={styles.incDec}>
-        <button>
-          <HiPlus />
-        </button>
-        3
-        <button>
-          <HiPlus />
-        </button>
-      </div>
+      <IncDec />
       <span className={styles.subtotal}>$92.97</span>
       <span className={styles.trash}>
         <button>

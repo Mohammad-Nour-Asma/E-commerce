@@ -10,7 +10,7 @@ const ProductBox = (props) => {
       <div className={styles.productLayout}>
         <img className={styles.image} src={props.item.image} alt="mobile" />
         <div className={styles.toProduct}>
-          <Link to={"/"}>
+          <Link to={"/details"}>
             <IoSearchCircleSharp />
           </Link>
         </div>

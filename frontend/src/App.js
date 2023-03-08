@@ -4,11 +4,11 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import About from "./pages/About/About";
 import Cart from "./pages/Cart/Cart";
-import Details from "./pages/Details";
+import Details from "./pages//Details/Details";
 import Home from "./pages/Home";
-import Login from "./pages/Products/Login & Register/Login";
+import Login from "./pages/Login & Register/Login";
 import Products from "./pages/Products/Products";
-import Register from "./pages/Products/Login & Register/Register";
+import Register from "./pages/Login & Register/Register";
 
 function App() {
   return (
