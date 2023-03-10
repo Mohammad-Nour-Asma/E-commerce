@@ -11,8 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('carts', function (Blueprint $table) {
+        Schema::create('orderIn', function (Blueprint $table) {
             $table->id();
+            $table->string('storekeeper_id');
+            $table->float('total_price');
+            $table->foreignId('supplier_id');
+            $table->boolean('admin_checking');
+            $table->boolean('accountant_checking');
             $table->timestamps();
         });
     }
@@ -22,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('carts');
+        Schema::dropIfExists('cart_items');
     }
 };
