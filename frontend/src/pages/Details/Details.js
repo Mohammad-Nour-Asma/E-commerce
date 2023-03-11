@@ -1,14 +1,42 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import Path from "../../components/Path/Path";
 import styles from "./Details.module.css";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import image1 from "../../assest/images/mob1.jpg";
-import image2 from "../../assest/images/mob2.jpg";
-import image3 from "../../assest/images/mob3.jpg";
 import "@splidejs/react-splide/css";
 import IncDec from "../Cart/IncDec";
+import axios from "axios";
+import { domain, get_product_details_url } from "../../assest/Api/Api";
+import Error from "../../components/Error/Error";
+import Spinner from "../../components/Spinner/Spinner";
+import { useGlobalContext } from "../../context";
+import { BsCartFill } from "react-icons/bs";
+
 const Details = () => {
+  const [details, setDetails] = useState({});
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const { id } = useParams();
+  const { auth } = useGlobalContext();
+
+  const getProducts = async () => {
+    try {
+      setLoading(true);
+      setError(false);
+      const response = await axios.get(get_product_details_url + "/" + id, {});
+      setDetails(response.data.product);
+
+      setLoading(false);
+    } catch (ex) {
+      setError(true);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+
   return (
     <main>
       <Path path=" Products / Mobile" />
@@ -17,61 +45,65 @@ const Details = () => {
           Back to products
         </Link>
         <div className={styles.details}>
-          <div className={styles.images}>
-            <Splide
-              options={{
-                drag: "free",
-                arrows: true,
-                type: "loop",
-                perPage: 1,
-                pagination: true,
-                gap: "1rem",
-              }}
-              aria-label="My Favorite Images"
-            >
-              <SplideSlide>
+          {loading ? (
+            <Spinner />
+          ) : error ? (
+            <Error />
+          ) : (
+            <>
+              <div className={styles.images}>
+                <Splide
+                  options={{
+                    drag: "free",
+                    arrows: true,
+                    type: "loop",
+                    perPage: 1,
+                    pagination: true,
+                    gap: "1rem",
+                  }}
+                  aria-label="My Favorite Images"
+                >
+                  {details.images &&
+                    details.images.map((item, index) => {
+                      return (
+                        <SplideSlide key={index}>
+                          <div>
+                            <img src={`${domain}${item}`} alt="Image 1" />
+                          </div>
+                        </SplideSlide>
+                      );
+                    })}
+                </Splide>
+              </div>
+              <div className={styles.info}>
+                <h2>{details.name}</h2>
+                <span>$ {details.price}</span>
+                <p className={styles.brief}>{details.description}</p>
                 <div>
-                  <img src={image1} alt="Image 1" />
+                  <span>Brand :</span>
+                  <span>{details.brand}</span>
                 </div>
-              </SplideSlide>
-              <SplideSlide>
                 <div>
-                  <img src={image2} alt="Image 2" />
+                  <span>Ram :</span>
+                  <span>{details.ram}Gb</span>
                 </div>
-              </SplideSlide>
-              <SplideSlide>
                 <div>
-                  <img src={image3} alt="Image 3" />
+                  <span>Processer :</span>
+                  <span>{details.processor}</span>
                 </div>
-              </SplideSlide>
-            </Splide>
-          </div>
-          <div className={styles.info}>
-            <h2>Huawei P50 Pro</h2>
-            <span>$125.99</span>
-            <p className={styles.brief}>
-              Cloud bread VHS hell of banjo bicycle rights jianbing umami
-              mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr
-              dreamcatcher waistcoat, authentic chillwave trust fund. Viral
-              typewriter fingerstache pinterest pork belly narwhal. Schlitz
-              venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki
-              trust fund hashtag kinfolk microdosing gochujang live-edge
-            </p>
-            <div>
-              <span>Brand :</span>
-              <span>Iphone</span>
-            </div>
-            <div>
-              <span>Ram :</span>
-              <span>8Gb</span>
-            </div>
-            <div>
-              <span>Processer :</span>
-              <span>12300T</span>
-            </div>
-            <IncDec />
-            <button className="button">Add To Cart</button>
-          </div>
+                {auth ? (
+                  <>
+                    <IncDec />
+                    <button className="button">Add To Cart</button>
+                  </>
+                ) : (
+                  <Link to={"/login"} className="sub-button">
+                    Log In to fill your cart <BsCartFill />
+                  </Link>
+                )}
+              </div>
+            </>
+          )}
         </div>
       </div>
     </main>

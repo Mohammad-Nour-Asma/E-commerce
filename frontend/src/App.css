@@ -169,6 +169,25 @@ img {
   padding: 0.2rem 1.2rem;
 }
 
+.sides {
+  text-align: center;
+  width: 250px;
+
+  margin: 6rem auto;
+  font-size: var(--h3-font-size);
+  font-weight: 700;
+  position: relative;
+
+  color: #111112cf;
+}
+
+.feedback {
+  margin: -0.8rem 0 0 4px;
+  font-size: 0.8rem;
+  color: red !important;
+  margin-bottom: 10px !important;
+
+}
 
 
 /*=============== BREAKPOINTS ===============*/

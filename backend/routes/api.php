@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CartItemController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
@@ -22,6 +23,7 @@ Route::post('/login' , [AuthController::class , 'login']);
 Route::post('/register' , [AuthController::class , 'register']);
 Route::post('/products' , [ProductController::class , 'index']);
 Route::get('/product/{product}' , [ProductController::class , 'details']);
+Route::get('/brands' , [BrandController::class , 'index']);
 
 Route::group(['middleware' => ['jwt.verify']], function() {
 

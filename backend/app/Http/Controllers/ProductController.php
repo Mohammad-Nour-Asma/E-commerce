@@ -14,7 +14,7 @@ class ProductController extends Controller
     public function index (){
         return response([
             "products"=>Product::latest()
-                ->filter(\request(['search' , 'brand' , 'ram']))
+                ->filter(\request(['search' , 'brand' , 'ram', 'price']))
                 ->get()
                 ->map(function ($item ){
                     return new ProductsBrowse($item);

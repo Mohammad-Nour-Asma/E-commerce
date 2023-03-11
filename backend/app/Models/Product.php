@@ -29,7 +29,12 @@ class Product extends Model
         )  ;
 
         $quary->when($filters['ram'] ?? false, function($quary, $ram){
-            $quary->where('ram',$ram);
+            $quary->where('ram','<=',$ram);
+          }
+        ) ;
+
+        $quary->when($filters['price'] ?? false, function($quary, $price){
+            $quary->where('price_for_selling','<=',$price);
           }
         ) ;
     }

@@ -87,3 +87,59 @@
 .filters form input[type='text']:focus {
     outline: none;
 }
+
+.brands,
+.ram,
+.price {
+    margin: 1.5rem 0;
+}
+
+
+.ram span,
+.price span {
+    display: block;
+    color: #48647f;
+    font-size: 0.9rem;
+    margin: 0.5rem 0 0.1rem;
+}
+
+.brands button {
+    display: block;
+    margin: 0.3rem 0;
+    color: var(--sec-color);
+    cursor: pointer;
+    transition: 0.3s ease-out;
+    width: fit-content;
+    background-color: #fff;
+    font-family: 'Oswald';
+}
+
+.brands button.active {
+    border-bottom: 1px solid;
+    padding: 0 1px;
+}
+
+.filterTitle {
+    font-size: var(--h2-font-size);
+    font-weight: 500;
+    color: var(--text-color);
+    letter-spacing: 1px;
+}
+
+.brands button:hover {
+    transform: translateX(3px);
+}
+
+.clearFilters {
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    background-color: #ff1919;
+    font-weight: 600;
+    color: #fff;
+    font-size: 0.9rem;
+    transition: 0.2s;
+}
+
+.clearFilters:hover {
+    background-color: #f00000;
+}

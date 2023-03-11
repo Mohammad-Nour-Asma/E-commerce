@@ -5,10 +5,11 @@ import { GoThreeBars } from "react-icons/go";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 import Menu from "./Menu";
+import { useGlobalContext } from "../../context";
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
-
+  const { auth } = useGlobalContext();
   return (
     <div className={`container ${styles.header}`}>
       <div>
@@ -28,13 +29,15 @@ const Header = () => {
         </ul>
 
         <div className={styles.personal}>
-          <Link to="/cart">
-            Cart
-            <div className={styles.cart}>
-              <BsCartFill />
-              <div className={styles.num}>3</div>
-            </div>
-          </Link>
+          {auth && (
+            <Link to="/cart">
+              Cart
+              <div className={styles.cart}>
+                <BsCartFill />
+                <div className={styles.num}>3</div>
+              </div>
+            </Link>
+          )}
           <Link to="/login">
             Login
             <HiUserAdd />

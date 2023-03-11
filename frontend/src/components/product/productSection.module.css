@@ -42,6 +42,8 @@
 
 .box {
     border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 0 12px 0px #dfdfdf;
 }
 
 .image {
@@ -90,6 +92,7 @@
     display: flex;
     justify-content: space-between;
     margin-top: 0.3rem;
+    padding: 0 .5rem;
 
 }
 

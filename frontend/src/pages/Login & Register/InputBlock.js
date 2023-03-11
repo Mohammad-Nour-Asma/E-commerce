@@ -1,11 +1,19 @@
 import React from "react";
 import styles from "./Authentication.module.css";
 
-const InputBlock = ({ lable, name, type }) => {
+const InputBlock = ({ lable, name, type, setInput }) => {
   return (
     <div className={styles.input}>
       <label htmlFor={name}>{lable}</label>
-      <input type={type} name={name} id={name} />
+      <input
+        onChange={(e) => {
+          setInput(e.target.value);
+        }}
+        type={type}
+        name={name}
+        required
+        id={name}
+      />
     </div>
   );
 };
