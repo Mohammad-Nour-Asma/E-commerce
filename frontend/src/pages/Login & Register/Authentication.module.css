@@ -56,7 +56,3 @@
     -webkit-background-clip: text;
     font-weight: 500;
 }
-
-.register p.active {
-    display: block;
-}

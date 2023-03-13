@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('product_id');
             $table->foreignId('user_id');
             $table->integer('amount');
+            $table->float('subtotal');
             $table->timestamps();
         });
     }

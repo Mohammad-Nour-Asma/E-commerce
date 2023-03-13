@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { BsCartFill } from "react-icons/bs";
 import { HiUserAdd } from "react-icons/hi";
+import { CgProfile } from "react-icons/cg";
 import { GoThreeBars } from "react-icons/go";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
@@ -9,7 +10,7 @@ import { useGlobalContext } from "../../context";
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
-  const { auth } = useGlobalContext();
+  const { auth, cartdata } = useGlobalContext();
   return (
     <div className={`container ${styles.header}`}>
       <div>
@@ -34,14 +35,23 @@ const Header = () => {
               Cart
               <div className={styles.cart}>
                 <BsCartFill />
-                <div className={styles.num}>3</div>
+                {cartdata.cart && (
+                  <div className={styles.num}>{cartdata.cart?.length}</div>
+                )}
               </div>
             </Link>
           )}
-          <Link to="/login">
-            Login
-            <HiUserAdd />
-          </Link>
+          {auth ? (
+            <Link to="/profile">
+              Profile
+              <CgProfile />
+            </Link>
+          ) : (
+            <Link to="/login">
+              Login
+              <HiUserAdd />
+            </Link>
+          )}
         </div>
         <button
           onClick={() => {

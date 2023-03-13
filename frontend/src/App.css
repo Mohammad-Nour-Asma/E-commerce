@@ -74,13 +74,14 @@ input,
 textarea {
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
-
+  position: relative;
 }
 
 body {
   background-color: #fff;
   /* color: var(--text-color); */
   font-family: 'Oswald', sans-serif;
+  position: relative;
 }
 
 h1,
@@ -178,7 +179,11 @@ img {
   font-weight: 700;
   position: relative;
 
-  color: #111112cf;
+  color: #111112cf !important;
+}
+
+.sides p {
+  margin: 0.2rem 0 !important;
 }
 
 .feedback {

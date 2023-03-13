@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Path from "../../components/Path/Path";
 import styles from "./Details.module.css";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import IncDec from "../Cart/IncDec";
 import axios from "axios";
-import { domain, get_product_details_url } from "../../assest/Api/Api";
+import {
+  add_cartItem_url,
+  domain,
+  get_product_details_url,
+} from "../../assest/Api/Api";
 import Error from "../../components/Error/Error";
 import Spinner from "../../components/Spinner/Spinner";
 import { useGlobalContext } from "../../context";
@@ -17,7 +21,9 @@ const Details = () => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
-  const { auth } = useGlobalContext();
+  const { auth, token } = useGlobalContext();
+  const [counter, setCounter] = useState(1);
+  const navigate = useNavigate();
 
   const getProducts = async () => {
     try {
@@ -36,6 +42,24 @@ const Details = () => {
   useEffect(() => {
     getProducts();
   }, []);
+
+  const addItemToCart = async () => {
+    try {
+      setLoading(true);
+      setError(false);
+      const resp = await axios.post(add_cartItem_url, {
+        product_id: id,
+        token,
+        amount: counter,
+      });
+      setLoading(false);
+      navigate("/cart");
+    } catch (error) {
+      console.log(error.response.data);
+      setError(true);
+      setLoading(false);
+    }
+  };
 
   return (
     <main>
@@ -93,8 +117,15 @@ const Details = () => {
                 </div>
                 {auth ? (
                   <>
-                    <IncDec />
-                    <button className="button">Add To Cart</button>
+                    <IncDec counter={counter} setCounter={setCounter} />
+                    <button
+                      onClick={() => {
+                        addItemToCart();
+                      }}
+                      className="button"
+                    >
+                      Add To Cart
+                    </button>
                   </>
                 ) : (
                   <Link to={"/login"} className="sub-button">

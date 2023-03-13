@@ -20,6 +20,7 @@ class CartResource extends JsonResource
             "product"=> new ProductsBrowse(Product::find($this->product_id)),
             "user_id"=> $this->user_id,
             "amount"=> $this->amount,
+            "subtotal"=> $this->subtotal,
             "created_at"=> $this->created_at,
        ];
     }

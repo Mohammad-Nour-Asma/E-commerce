@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login & Register/Login";
 import Products from "./pages/Products/Products";
 import Register from "./pages/Login & Register/Register";
+import Popup from "./components/popup/Popup";
 
 function App() {
   return (

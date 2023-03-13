@@ -3,9 +3,12 @@ import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 import { BsCartFill } from "react-icons/bs";
 import { HiUserAdd } from "react-icons/hi";
-import { GoThreeBars } from "react-icons/go";
+import { useGlobalContext } from "../../context";
+import { CgProfile } from "react-icons/cg";
 
 const Menu = () => {
+  const { auth } = useGlobalContext();
+
   return (
     <>
       {" "}
@@ -21,17 +24,26 @@ const Menu = () => {
         </li>
       </ul>
       <div className={styles.personal}>
-        <Link to="/cart">
-          Cart
-          <div className={styles.cart}>
-            <BsCartFill />
-            <div className={styles.num}>3</div>
-          </div>
-        </Link>
-        <Link to="/login">
-          Login
-          <HiUserAdd />
-        </Link>
+        {auth && (
+          <Link to="/cart">
+            Cart
+            <div className={styles.cart}>
+              <BsCartFill />
+              <div className={styles.num}>3</div>
+            </div>
+          </Link>
+        )}
+        {auth ? (
+          <Link to="/profile">
+            Profile
+            <CgProfile />
+          </Link>
+        ) : (
+          <Link to="/login">
+            Login
+            <HiUserAdd />
+          </Link>
+        )}
       </div>
     </>
   );
