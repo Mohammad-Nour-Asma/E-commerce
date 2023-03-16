@@ -8,6 +8,8 @@ import Spinner from "../../components/Spinner/Spinner";
 import { useGlobalContext } from "../../context";
 import styles from "./Profile.module.css";
 
+import Settings from "./Settings";
+
 const Profile = () => {
   const [paid, setPaid] = useState("");
   const [ready, setReady] = useState("");
@@ -16,6 +18,7 @@ const Profile = () => {
 
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
+  const { setAuth, user } = useGlobalContext();
 
   const getOrders = async () => {
     try {
@@ -48,7 +51,7 @@ const Profile = () => {
     <main>
       <Path path="Profile" />
       <div className="container">
-        <h2 className={styles.header}>Welcome, David</h2>
+        <h2 className={styles.header}>Welcome, {user?.name}</h2>
         <div className="grid">
           <aside className={styles.filters}>
             <span>Filter Your Orders</span>
@@ -86,6 +89,7 @@ const Profile = () => {
                   Ready
                 </button>
               </li>
+              <Settings setLoading={setLoading} setError={setError} />
             </ul>
           </aside>
           {loading ? (
@@ -99,7 +103,7 @@ const Profile = () => {
           ) : (
             <div>
               <div className={styles.Ordersheader}>
-                <span>{orders.length} Orders Found</span>
+                <span>{orders?.length} Orders Found</span>
               </div>
               {orders?.map((item) => {
                 return <Order order={item} key={item.id} />;

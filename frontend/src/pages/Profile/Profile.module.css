@@ -4,7 +4,7 @@
     font-size: var(--h1-font-size);
 }
 
-.filters span {
+.filters>span:nth-child(1) {
     font-size: var(--h3-font-size);
     margin-bottom: 1.5rem;
     display: block;
@@ -48,4 +48,34 @@
         width: 50px;
 
     }
+}
+
+ul li button.logout {
+    font-size: var(--h3-font-size);
+    font-weight: 500;
+
+    padding: 0.1rem 0.3rem;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    transition: 0.3s;
+}
+
+
+
+ul li button.logout:hover {
+    background-color: #ddd;
+}
+
+ul li button.logout svg {
+    font-size: 1.3rem;
+}
+
+.setting {
+    margin: 2rem 0;
+}
+
+.setting li {
+    margin-bottom: 1rem;
 }

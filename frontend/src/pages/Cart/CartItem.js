@@ -3,6 +3,7 @@ import styles from "./Cart.module.css";
 import { FaTrash } from "react-icons/fa";
 import IncDec from "./IncDec";
 import { domain } from "../../assest/Api/Api";
+import { Link } from "react-router-dom";
 
 const CartItem = ({ item, deleteItem, incDec }) => {
   const id = item.id;
@@ -11,10 +12,10 @@ const CartItem = ({ item, deleteItem, incDec }) => {
     <div className={styles.content}>
       <div className={styles.info}>
         <img src={`${domain}${item.product.image}`} alt="" />
-        <span>
+        <Link to={`/details/${item.product.id}`}>
           {item.product.name}
           <span className={styles.price}>${item.product.price}</span>
-        </span>
+        </Link>
       </div>
       <span className={styles.price}>${item.product.price}</span>
       <IncDec id={id} incDec={incDec} counter={item.amount} />

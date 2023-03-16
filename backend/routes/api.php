@@ -27,6 +27,9 @@ Route::get('/brands' , [BrandController::class , 'index']);
 
 Route::group(['middleware' => ['jwt.verify']], function() {
 
+
+
+   Route::post('/profile' , [AuthController::class , 'userProfile']);
    Route::post('/logout' , [AuthController::class , 'logout']);
 
 

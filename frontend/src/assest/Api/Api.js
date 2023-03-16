@@ -12,3 +12,5 @@ export const increase_item_url = `${domain}/api/cart/increase`;
 export const decrease_item_url = `${domain}/api/cart/decrease`;
 export const order_cart_url = `${domain}/api/order`;
 export const get_order_url = `${domain}/api/order/get`;
+export const logout_url = `${domain}/api/logout`;
+export const profile_url = `${domain}/api/profile`;

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { login_url, cartItems_url } from "./assest/Api/Api";
+import { login_url, cartItems_url, profile_url } from "./assest/Api/Api";
 
 const AppContext = React.createContext();
 
@@ -11,17 +11,34 @@ const AppProvider = ({ children }) => {
   const [user, setUser] = useState("");
   const [cartdata, setCartdata] = useState([]);
   const [cartError, setCartError] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      setAuth(true);
-      setToken(localStorage.getItem("token"));
       try {
+        setAuth(true);
+        setToken(localStorage.getItem("token"));
+
+        profile();
         cart();
-      } catch (error) {}
+      } catch (error) {
+        localStorage.removeItem("token");
+        setAuth(false);
+      }
     }
   }, []);
+
+  const profile = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const resp = await axios.post(profile_url, { token });
+      setUser(resp.data.user);
+    } catch (error) {
+      localStorage.removeItem("token");
+      setAuth(false);
+    }
+  };
 
   const login = async (email, password) => {
     const loginRes = await axios.post(login_url, { email, password });
@@ -64,6 +81,7 @@ const AppProvider = ({ children }) => {
         cart,
         cartdata,
         cartError,
+        setAuth,
         setCartError,
       }}
     >

@@ -10,11 +10,12 @@ import Login from "./pages/Login & Register/Login";
 import Products from "./pages/Products/Products";
 import Register from "./pages/Login & Register/Register";
 import Profile from "./pages/Profile/Profile";
+import AccountantDashboard from "./pages/Dashboards/AccountantDashboard";
 
 function App() {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/about" element={<About />} />
@@ -24,8 +25,9 @@ function App() {
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/profile" element={<Profile />} />
+        <Route exact path="/accountant" element={<AccountantDashboard />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
