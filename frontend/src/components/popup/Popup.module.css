@@ -1,7 +1,7 @@
 .popup {
     transform: scale(0);
 
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.397);
@@ -79,12 +79,12 @@
 
 
 .hide {
-    animation: hide 0.5s;
+    animation: hide 0.5s ease-in-out;
     animation-fill-mode: forwards;
 }
 
 .show {
-    animation: show 0.5s;
+    animation: show 0.5s ease-in-out;
     animation-fill-mode: forwards;
 }
 
@@ -93,6 +93,7 @@
         disblay: block;
         transform: scale(1);
         opacity: 1;
+        border-radius: 0;
     }
 
     100% {
@@ -100,6 +101,7 @@
         transform: scale(0);
         opacity: 0;
         display: none;
+        border-radius: 200%;
     }
 }
 
@@ -108,11 +110,14 @@
         display: none;
         transform: scale(0.1);
         opacity: 0;
+        border-radius: 200%;
+
     }
 
     100% {
         display: block;
         transform: scale(1);
         opacity: 1;
+        border-radius: 0;
     }
 }

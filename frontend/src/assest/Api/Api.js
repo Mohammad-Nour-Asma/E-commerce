@@ -11,3 +11,4 @@ export const delete_item_url = `${domain}/api/cart/delete`;
 export const increase_item_url = `${domain}/api/cart/increase`;
 export const decrease_item_url = `${domain}/api/cart/decrease`;
 export const order_cart_url = `${domain}/api/order`;
+export const get_order_url = `${domain}/api/order/get`;

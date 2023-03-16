@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Resources\OrderResource;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
@@ -48,9 +49,14 @@ class OrderController extends Controller
 
   }
   public function index(){
+    $orders = Order::latest()
+        ->filter(\request(['ready' , 'paid']))
+        ->get()
+        ->map(function ($item){
+            return new OrderResource($item);
+        });
 
-      $order = auth()->user()->orders;
-      return \response(['order'=>$order , 'status'=>200]);
+      return \response()->json(['orders'=>$orders ], 200);
 
   }
 }

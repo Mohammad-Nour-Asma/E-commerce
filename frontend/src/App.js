@@ -9,7 +9,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login & Register/Login";
 import Products from "./pages/Products/Products";
 import Register from "./pages/Login & Register/Register";
-import Popup from "./components/popup/Popup";
+import Profile from "./pages/Profile/Profile";
 
 function App() {
   return (
@@ -23,6 +23,7 @@ function App() {
         <Route exact path="/cart" element={<Cart />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/register" element={<Register />} />
+        <Route exact path="/profile" element={<Profile />} />
       </Routes>
       <Footer />
     </>

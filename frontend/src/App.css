@@ -136,8 +136,21 @@ img {
 
 .grid {
   display: grid;
-  gap: 1.5rem;
+  grid-template-columns: 200px 1fr;
+  margin: 4rem auto;
+  gap: 3rem;
+
 }
+
+
+@media (max-width :992px) {
+  .grid {
+    display: block;
+  }
+
+
+}
+
 
 /*=============== BUTTONS ===============*/
 .button, .sub-button {

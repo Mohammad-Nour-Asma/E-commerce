@@ -1,0 +1,51 @@
+.header {
+    margin: 2rem auto;
+    text-align: center;
+    font-size: var(--h1-font-size);
+}
+
+.filters span {
+    font-size: var(--h3-font-size);
+    margin-bottom: 1.5rem;
+    display: block;
+
+}
+
+.filters>ul>li>button {
+    font-size: var(--small-font-size);
+    margin: 0.4rem 0;
+}
+
+.Ordersheader {
+    margin: 0;
+    font-size: var(--normal-font-size);
+    text-align: left;
+    width: 100%;
+}
+
+.Ordersheader span {
+
+    position: relative;
+
+    padding: 0 0.5rem 0 0;
+
+}
+
+.Ordersheader span::after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 200px;
+    background: var(--main-color);
+    top: 50%;
+    transform: translateY(-50%);
+    left: 100%;
+}
+
+@media (max-width :480px) {
+    .Ordersheader span::after {
+
+        width: 50px;
+
+    }
+}

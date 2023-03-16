@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState, useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { login_url, cartItems_url } from "./assest/Api/Api";
 
 const AppContext = React.createContext();
@@ -10,6 +11,7 @@ const AppProvider = ({ children }) => {
   const [user, setUser] = useState("");
   const [cartdata, setCartdata] = useState([]);
   const [cartError, setCartError] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -44,6 +46,7 @@ const AppProvider = ({ children }) => {
       if (cartRes.data.status === "Token is Expired") {
         setAuth(false);
         localStorage.clear();
+        navigate("/");
       }
       setCartdata(cartRes.data);
     } catch (error) {
