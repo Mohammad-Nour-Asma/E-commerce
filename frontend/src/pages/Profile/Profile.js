@@ -11,14 +11,14 @@ import styles from "./Profile.module.css";
 import Settings from "./Settings";
 
 const Profile = () => {
-  const [paid, setPaid] = useState("");
-  const [ready, setReady] = useState("");
+  const [paid, setPaid] = useState();
+  const [ready, setReady] = useState();
   const [orders, setOrders] = useState([]);
-  const { token } = useGlobalContext();
+  const token = localStorage.getItem("token");
 
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { setAuth, user } = useGlobalContext();
+  const { user } = useGlobalContext();
 
   const getOrders = async () => {
     try {
@@ -30,6 +30,7 @@ const Profile = () => {
         paid,
       });
       const data = await resp.data;
+
       setOrders(data.orders);
       setLoading(false);
     } catch (error) {
@@ -42,10 +43,6 @@ const Profile = () => {
   useEffect(() => {
     getOrders();
   }, [paid, ready]);
-
-  useEffect(() => {
-    getOrders();
-  }, []);
 
   return (
     <main>

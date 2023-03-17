@@ -1,22 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
 import styles from "./Popup.module.css";
 
-const Popup = ({ message, setPop, pop, hitApi }) => {
-  const ref = useRef();
-
-  //   useEffect(() => {
-  //     if (ref.current) {
-  //       ref.current.scrollIntoView({ behavior: "smooth", block: "center" });
-  //     }
-  //   }, [ref.current]);
-
+const Popup = ({ message, setPop, pop, hitApi, order_id }) => {
   if (pop === null || pop === undefined) {
     return <></>;
   }
-
+  console.log(order_id);
   return (
     <div
-      ref={ref}
       className={
         pop === "open"
           ? `${styles.popup} ${styles.show}`
@@ -32,6 +22,11 @@ const Popup = ({ message, setPop, pop, hitApi }) => {
           <button
             onClick={() => {
               setPop("close");
+
+              if (hitApi && order_id) {
+                hitApi(order_id);
+                return;
+              }
               if (hitApi) hitApi();
             }}
           >

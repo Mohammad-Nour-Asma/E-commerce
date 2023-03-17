@@ -1,0 +1,31 @@
+.orders {
+    padding: 1rem 2rem;
+
+}
+
+.orders h1 {
+    margin: 1rem auto 2rem;
+    text-align: center;
+
+}
+
+.dashboard>div {
+    margin: 0 !important;
+    height: 100vh;
+}
+
+.aside {
+    padding: 1rem;
+    background: #9E9E9E;
+    color: white;
+    font-size: var(--h2-font-size);
+}
+
+.aside p {
+    margin-bottom: 2rem;
+}
+
+.aside li>button {
+
+    margin-bottom: 1rem;
+}

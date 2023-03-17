@@ -6,7 +6,9 @@ namespace Database\Seeders;
 use App\Models\Product;
 use App\Models\Brand;
 use App\Models\Image;
+use App\Models\Order;
 use App\Models\Role;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,6 +22,8 @@ class DatabaseSeeder extends Seeder
         Role::truncate();
         Image::truncate();
         Product::truncate();
+        User::truncate();
+        Order::truncate();
 
 
         // Seeding the Roles
@@ -35,6 +39,14 @@ class DatabaseSeeder extends Seeder
         ]);Role::create([
             'id'=>4,
             'role_name'=>'accountant'
+        ]);
+
+        //Seed the admins
+        User::create([
+            'name'=>"accountant",
+            'email'=>'acc@acc.com',
+            'password'=>bcrypt('123456789'),
+            'role_id'=> 4,
         ]);
         // Seed for Brands
         Brand::create([

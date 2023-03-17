@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->float('total_price');
-            $table->boolean('paid');
-            $table->boolean('ready');
+            $table->boolean('paid')->default(false);
+            $table->boolean('ready')->default(false);
             $table->timestamps();
         });
     }

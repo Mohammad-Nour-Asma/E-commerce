@@ -17,8 +17,8 @@ class OrderItemResource extends JsonResource
     {
         return [
             "id"=> $this->id,
-            "product"=> new ProductsBrowse(Product::find($this->id)),
-            "amount"=> $this->id,
+            "product"=> new ProductsBrowse(Product::find($this->product_id)),
+            "amount"=> $this->amount,
             'total_price'=> $this->total_price,
         ];
     }

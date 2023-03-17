@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountantController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CartItemController;
@@ -45,5 +46,8 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::post('/order' , [OrderController::class , 'order']);
     Route::post('/order/get' , [OrderController::class , 'index']);
 
+    //Accountant
+    Route::post('/accountant/orders' , [AccountantController::class , 'index']);
+    Route::post('/accountant/paid' , [AccountantController::class , 'paid']);
 
 });

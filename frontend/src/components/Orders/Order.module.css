@@ -95,3 +95,19 @@
     background: #afffaf;
     border: 1px solid #46ff46;
 }
+
+.accountant {
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.accountant:hover {
+    transform: scale(1.02);
+    background: #e0e0e0 !important;
+}
+
+.user span {
+    display: block;
+    font-size: var(--small-font-size);
+    font-family: Arial, Helvetica, sans-serif;
+}

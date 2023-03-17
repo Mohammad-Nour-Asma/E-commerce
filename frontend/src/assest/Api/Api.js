@@ -14,3 +14,5 @@ export const order_cart_url = `${domain}/api/order`;
 export const get_order_url = `${domain}/api/order/get`;
 export const logout_url = `${domain}/api/logout`;
 export const profile_url = `${domain}/api/profile`;
+export const all_orders_acc_url = `${domain}/api/accountant/orders`;
+export const confirm_payment_url = `${domain}/api/accountant/paid`;

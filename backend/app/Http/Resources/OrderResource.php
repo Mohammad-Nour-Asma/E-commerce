@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -18,7 +19,7 @@ class OrderResource extends JsonResource
 
         return [
             "id"=> $this->id,
-            "user_id"=> $this->user_id,
+            "user"=> User::find($this->user_id),
             "total_price"=> $this->total_price,
             "paid"=> $this->paid,
             "ready"=> $this->ready,

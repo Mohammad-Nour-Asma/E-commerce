@@ -43,6 +43,7 @@ const Products = () => {
       setBrandsError(false);
       const response = await axios.get(get_brands_url);
       setBrands(response.data.brands);
+      console.log(response);
     } catch (ex) {
       setBrandsError(true);
     }

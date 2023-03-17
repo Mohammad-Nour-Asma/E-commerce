@@ -19,8 +19,7 @@ class OrderController extends Controller
      $order = Order::create([
           'user_id'=>auth()->user()->id,
           'total_price'=>0,
-          'paid'=>false,
-          'ready'=>false,
+
       ]);
 
       //Create the order items
@@ -50,7 +49,7 @@ class OrderController extends Controller
   }
   public function index(){
     $orders = Order::latest()
-        ->filter(\request(['ready' , 'paid']))
+        ->filter( array_merge(\request(['ready' , 'paid']) ,['user'=>auth()->user()->id]  ))
         ->get()
         ->map(function ($item){
             return new OrderResource($item);
