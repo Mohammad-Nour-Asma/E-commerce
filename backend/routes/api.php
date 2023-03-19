@@ -1,11 +1,15 @@
 <?php
 
 use App\Http\Controllers\AccountantController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CartItemController;
+use App\Http\Controllers\NewAmountsController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\StorekeeperController;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -47,7 +51,36 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::post('/order/get' , [OrderController::class , 'index']);
 
     //Accountant
-    Route::post('/accountant/orders' , [AccountantController::class , 'index']);
-    Route::post('/accountant/paid' , [AccountantController::class , 'paid']);
+    Route::group(['middleware' => ['accountant']], function() {
+
+         Route::post('/accountant/orders' , [AccountantController::class , 'index']);
+         Route::post('/accountant/paid' , [AccountantController::class , 'paid']);
+         Route::post('/accountant/confirmNewAmounts' , [AccountantController::class , 'confirmNewAmounts']);
+
+
+
+
+        });
+
+    //StoreKeeper
+    Route::group(['middleware' => ['storekeeper']], function() {
+        Route::post('/storekeeper/orders' , [StorekeeperController::class , 'index']);
+        Route::post('/admins/products' , [ProductController::class , 'getForAdmins']);
+        Route::post('/storekeeper/ready' , [StorekeeperController::class , 'setReady']);
+        Route::post('/storekeeper/amounts' , [StorekeeperController::class , 'orderAmounts']);
+
+    });
+
+    //admins
+    Route::group(['middleware' => ['admin']], function() {
+        Route::post('/admin/products' , [ProductController::class , 'getForAdmins']);
+        Route::post('/admin/users' , [AdminController::class , 'getUsers']);
+        Route::post('/admin/user/order' , [AdminController::class , 'getUserOrders']);
+        Route::post('/admin/confirm' , [AdminController::class , 'confirmAmounts']);
+
+    });
+
+    Route::post('/newAmounts/get' , [NewAmountsController::class , 'index']);
+
 
 });

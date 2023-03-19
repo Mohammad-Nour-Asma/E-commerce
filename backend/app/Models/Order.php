@@ -29,7 +29,9 @@ class Order extends Model
 
 
         $quary->when($filters['ready'] ?? false, function($quary, $ready){
-            $quary->where('ready',$ready);
+            $res =  $ready === 'true'? true: 0;
+
+            $quary->where('ready',$res);
         }
         )  ;
 

@@ -79,7 +79,7 @@ const Profile = () => {
                 <button
                   onClick={() => {
                     setPaid("");
-                    setReady(true);
+                    setReady("true");
                   }}
                   className="sub-button"
                 >

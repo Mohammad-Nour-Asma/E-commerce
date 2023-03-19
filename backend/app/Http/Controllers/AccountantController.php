@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\OrderResource;
+use App\Models\NewAmount;
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -14,14 +16,8 @@ class AccountantController extends Controller
     //
 
     public function index(){
-
-        if(Role::find(auth()->user()->role_id)->role_name == 'accountant') {
-
-
-
-
             $order = Order::latest()
-                ->filter(\request(['paid' , 'ready']))
+                ->filter(\request(['paid']))
                 ->get()
                 ->map(function ($item) {
                     return new OrderResource($item);
@@ -29,17 +25,28 @@ class AccountantController extends Controller
 
 
             return response(['orders' => $order]);
-        }
-        return response(['message'=>'you are not authorized']);
+
+
     }
 
     public function paid(){
-        if(Role::find(auth()->user()->role_id)->role_name == 'accountant') {
         $order= Order::find(\request('order_id'));
         $order->update(['paid'=>true]);
         return response(['order'=>$order,'message'=>"updated", 'status'=>200]);
-        }
-        return response(['message'=>'you are not authorized']);
+    }
 
+    public function confirmNewAmounts()
+    {
+        $newAmounts = NewAmount::find(request('newAmounts_id'));
+        if($newAmounts?->admin_checking){
+            $newAmounts->update(['accountant_checking'=>true]);
+            $product =Product::find($newAmounts->product_id);
+           $product->update([
+                'amount_in_warehouse'=> $product->amount_in_warehouse + $newAmounts->amount_to_add,
+           ]);
+           return response(['amount'=>$newAmounts]);
+        }
+
+        return response(['message'=>"Faild"]);
     }
 }

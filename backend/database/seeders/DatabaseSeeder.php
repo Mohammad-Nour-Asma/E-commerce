@@ -8,6 +8,7 @@ use App\Models\Brand;
 use App\Models\Image;
 use App\Models\Order;
 use App\Models\Role;
+use App\Models\Supplier;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -48,6 +49,40 @@ class DatabaseSeeder extends Seeder
             'password'=>bcrypt('123456789'),
             'role_id'=> 4,
         ]);
+        User::create([
+            'name'=>"StoreKeeper",
+            'email'=>'sk@sk.com',
+            'password'=>bcrypt('123456789'),
+            'role_id'=> 2,
+        ]);
+        User::create([
+            'name'=>"Admin",
+            'email'=>'admin@admin.com',
+            'password'=>bcrypt('123456789'),
+            'role_id'=> 3,
+        ]);
+
+        //Seed Suppliers
+
+        Supplier::create([
+            'name'=>"John",
+            'email'=>'j@j.com',
+            'phone'=>'123456789',
+
+        ]);
+        Supplier::create([
+            'name'=>"Mike",
+            'email'=>'s@s.com',
+            'phone'=>'123456789',
+
+        ]);
+        Supplier::create([
+            'name'=>"Jordan",
+            'email'=>'s@e.com',
+            'phone'=>'123456789',
+
+        ]);
+
         // Seed for Brands
         Brand::create([
             'name'=>'Samsung'

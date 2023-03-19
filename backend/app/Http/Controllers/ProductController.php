@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ProductDetails;
+use App\Http\Resources\ProductResource;
 use App\Http\Resources\ProductsBrowse;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -30,5 +31,18 @@ class ProductController extends Controller
             'product'=> new ProductDetails($product),
             'status'=> 200,
         ]);
+    }
+    public function getForAdmins (){
+
+
+        return response([
+            "products"=>Product::latest()
+                ->filter(\request(['search' , 'brand' , 'ram', 'price','amount_in_warehouse']))
+                ->get()
+                 ->map(function ($item ){
+                    return new ProductResource($item);
+                }),
+                'status'=>200,
+            ]);
     }
 }

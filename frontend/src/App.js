@@ -11,6 +11,9 @@ import Products from "./pages/Products/Products";
 import Register from "./pages/Login & Register/Register";
 import Profile from "./pages/Profile/Profile";
 import AccountantDashboard from "./pages/Dashboards/AccountantDashboard";
+import StroeKeeperDashboard from "./pages/Dashboards/StroeKeeperDashboard";
+import AdminProducts from "./pages/Dashboards/dashboard component/AdminProducts";
+import StorekeeperOrders from "./pages/Dashboards/dashboard component/StorekeeperOrders";
 
 function App() {
   return (
@@ -26,6 +29,10 @@ function App() {
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/profile" element={<Profile />} />
         <Route exact path="/accountant" element={<AccountantDashboard />} />
+        <Route exact path="/storekeeper" element={<StroeKeeperDashboard />}>
+          <Route exact path="all-product" element={<AdminProducts />} />
+          <Route exact path="orders" element={<StorekeeperOrders />} />
+        </Route>
       </Routes>
       {/* <Footer /> */}
     </>

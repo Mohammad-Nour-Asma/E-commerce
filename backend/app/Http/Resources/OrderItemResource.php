@@ -15,11 +15,14 @@ class OrderItemResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+
         return [
             "id"=> $this->id,
             "product"=> new ProductsBrowse(Product::find($this->product_id)),
             "amount"=> $this->amount,
             'total_price'=> $this->total_price,
+            'status'=> ((Product::find($this->product_id))->amount_in_warehouse - $this->amount)>0 ?true : false,
         ];
+
     }
 }

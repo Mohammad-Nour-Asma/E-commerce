@@ -37,6 +37,12 @@ class Product extends Model
             $quary->where('price_for_selling','<=',$price);
           }
         ) ;
+
+        $quary->when($filters['amount_in_warehouse'] ?? false, function($quary, $amount){
+            $quary->where('amount_in_warehouse','<=',$amount);
+          }
+        ) ;
+
     }
 
     public function images(){

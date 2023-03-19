@@ -1,5 +1,5 @@
 .orders {
-    padding: 1rem 2rem;
+    padding: 1rem 1.5rem;
 
 }
 
@@ -28,4 +28,98 @@
 .aside li>button {
 
     margin-bottom: 1rem;
+}
+
+.title {
+    text-align: left;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+
+.tableContainer {
+    overflow: auto;
+    max-width: 100%;
+    margin: 1.5rem auto;
+}
+
+.table {
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 5px;
+    border-collapse: collapse;
+    width: 100%;
+
+}
+
+.table>.tableHeader {
+    background: var(--main-color);
+    color: #fff;
+    text-align: center;
+
+
+
+    border-radius: 5px 5px 0 0;
+}
+
+.table>.tableHeader th {
+    padding: 0.5rem;
+    text-transform: capitalize;
+    border: none;
+}
+
+.table .tabelBody {
+
+    padding: 0.5rem;
+    justify-content: start;
+}
+
+.table .tabelBody:nth-child(even) {
+    background-color: #f2f2f2;
+
+
+}
+
+.button {
+    border-radius: 10px;
+    background-color: #50c8ff;
+    cursor: pointer;
+    color: #fff;
+    font-size: 0.8rem;
+    padding: 0.1rem 0.3rem;
+    margin: 0.2rem;
+}
+
+.delete {
+    background-color: #f35f54;
+}
+
+.filters form input {
+    display: block;
+}
+
+.filters form input[type='text'] {
+    border-radius: 10px;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid #ddd;
+    margin-bottom: 1rem;
+}
+
+.filters form button {
+    display: block;
+    padding: 0.2rem 0.7rem;
+    border-radius: 10px;
+    background: var(--main-color);
+    color: white;
+    margin: 1rem 0;
+}
+
+.filters form .label {
+    margin-bottom: 1.5rem;
+}
+
+.filters form .label span:last-child {
+    font-weight: 500;
+    color: blueviolet;
+    margin-left: 0.3rem;
 }

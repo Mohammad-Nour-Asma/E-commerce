@@ -138,7 +138,7 @@ img {
   display: grid;
   grid-template-columns: 200px 1fr;
   margin: 4rem auto;
-  gap: 3rem;
+  gap: 1.5rem;
 
 }
 
