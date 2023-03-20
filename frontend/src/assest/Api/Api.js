@@ -17,3 +17,4 @@ export const profile_url = `${domain}/api/profile`;
 export const all_orders_acc_url = `${domain}/api/accountant/orders`;
 export const confirm_payment_url = `${domain}/api/accountant/paid`;
 export const get_Products_for_admins_url = `${domain}/api/admins/products`;
+export const delete_Product_url = `${domain}/api/storekeeper/delete`;

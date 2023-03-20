@@ -4,7 +4,8 @@ const Popup = ({ message, setPop, pop, hitApi, order_id }) => {
   if (pop === null || pop === undefined) {
     return <></>;
   }
-  console.log(order_id);
+  console.log(pop);
+
   return (
     <div
       className={

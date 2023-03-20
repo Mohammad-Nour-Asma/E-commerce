@@ -14,6 +14,7 @@ import AccountantDashboard from "./pages/Dashboards/AccountantDashboard";
 import StroeKeeperDashboard from "./pages/Dashboards/StroeKeeperDashboard";
 import AdminProducts from "./pages/Dashboards/dashboard component/AdminProducts";
 import StorekeeperOrders from "./pages/Dashboards/dashboard component/StorekeeperOrders";
+import EditProduct from "./pages/Dashboards/dashboard component/EditProduct";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route exact path="/storekeeper" element={<StroeKeeperDashboard />}>
           <Route exact path="all-product" element={<AdminProducts />} />
           <Route exact path="orders" element={<StorekeeperOrders />} />
+          <Route exact path="edit-product/:id" element={<EditProduct />} />
         </Route>
       </Routes>
       {/* <Footer /> */}

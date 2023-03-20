@@ -45,4 +45,10 @@ class ProductController extends Controller
                 'status'=>200,
             ]);
     }
+    public function delete()
+    {
+       $product = Product::find(request('product_id'));
+       $product?->update(['amount_in_warehouse'=>0]);
+       return response(['product'=>$product]);
+    }
 }

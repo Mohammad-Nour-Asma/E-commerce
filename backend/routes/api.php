@@ -68,6 +68,7 @@ Route::group(['middleware' => ['jwt.verify']], function() {
         Route::post('/admins/products' , [ProductController::class , 'getForAdmins']);
         Route::post('/storekeeper/ready' , [StorekeeperController::class , 'setReady']);
         Route::post('/storekeeper/amounts' , [StorekeeperController::class , 'orderAmounts']);
+        Route::post('/storekeeper/delete' , [ProductController::class , 'delete']);
 
     });
 

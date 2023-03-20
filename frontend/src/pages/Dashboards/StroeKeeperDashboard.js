@@ -3,6 +3,8 @@ import { Link, Outlet, Route, Routes } from "react-router-dom";
 import Products from "./dashboard component/AdminProducts";
 import Settings from "../Profile/Settings";
 import styles from "./AccountantDashboard.module.css";
+import Spinner from "../../components/Spinner/Spinner";
+import Error from "../../components/Error/Error";
 
 const StroeKeeperDashboard = () => {
   const [loading, setLoading] = useState(false);
@@ -29,7 +31,7 @@ const StroeKeeperDashboard = () => {
         </aside>
         <div className={styles.orders}>
           <h1>Welcome to Storekeeper Dashboard</h1>
-          <Outlet />
+          {loading ? <Spinner /> : error ? <Error /> : <Outlet />}
         </div>
       </div>
     </main>
