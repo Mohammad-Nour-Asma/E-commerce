@@ -9,6 +9,7 @@ use App\Http\Controllers\NewAmountsController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StorekeeperController;
+use App\Http\Controllers\SupplierContoller;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -69,6 +70,10 @@ Route::group(['middleware' => ['jwt.verify']], function() {
         Route::post('/storekeeper/ready' , [StorekeeperController::class , 'setReady']);
         Route::post('/storekeeper/amounts' , [StorekeeperController::class , 'orderAmounts']);
         Route::post('/storekeeper/delete' , [ProductController::class , 'delete']);
+        Route::post('/storekeeper/edit' , [ProductController::class , 'editProduct']);
+        Route::post('/storekeeper/add/product' , [ProductController::class , 'addProduct']);
+        Route::post('/storekeeper/get/suppliers' , [SupplierContoller::class , 'index']);
+        Route::post('/storekeeper/add/supplier' , [SupplierContoller::class , 'add']);
 
     });
 

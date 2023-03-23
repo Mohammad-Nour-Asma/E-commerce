@@ -123,3 +123,8 @@
     color: blueviolet;
     margin-left: 0.3rem;
 }
+
+.warning {
+    color: #f35f54;
+    font-weight: bold;
+}

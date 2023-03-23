@@ -7,8 +7,11 @@ use App\Models\Image;
 use App\Models\NewAmount;
 use App\Models\Order;
 use App\Models\Product;
+
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\File;
+use Psy\Readline\Hoa\Console;
 
 class StorekeeperController extends Controller
 {
@@ -66,8 +69,11 @@ class StorekeeperController extends Controller
 
         return response(["product"=>$product]);
     }
+
     public function editProduct(){
-        $product = request('product_id');
+        $product = Product::find(request('id'));
+
+
         $product->update([
           'name'=>request('name'),
           'processor'=>request('processor'),
@@ -77,9 +83,28 @@ class StorekeeperController extends Controller
           'brand_id'=>request('brand_id'),
         ]);
 
+        if(request('images')){
+            $product->images->each(function($item){
+                File::delete(public_path($item->src));
+                $item->delete();
+            });
+
+
+            // (request('images'))->each(function($item) use($product){
+            //      Image::create(['src'=>$item , 'product_id'=>$product->id]);
+            // });
+
+            $images=  request('images');
+
+            foreach ($images as $item) {
+
+                Image::create(['product_id'=>$product->id , 'src'=>$item]);
+
+            }
+
+        }
+
         return response(["product"=>$product]);
-
-
 
     }
 

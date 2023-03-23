@@ -1,0 +1,13 @@
+.suppliers {
+    margin: 1rem 0;
+}
+
+.suppliersInfo {
+    margin: 1rem 0;
+
+}
+
+.suppliersInfo span {
+    margin-left: 1.5rem;
+    text-decoration: underline;
+}

@@ -11,10 +11,12 @@ import Products from "./pages/Products/Products";
 import Register from "./pages/Login & Register/Register";
 import Profile from "./pages/Profile/Profile";
 import AccountantDashboard from "./pages/Dashboards/AccountantDashboard";
-import StroeKeeperDashboard from "./pages/Dashboards/StroeKeeperDashboard";
+import StroeKeeperDashboard from "./pages/Dashboards/StoreKeeper/StroeKeeperDashboard";
 import AdminProducts from "./pages/Dashboards/dashboard component/AdminProducts";
-import StorekeeperOrders from "./pages/Dashboards/dashboard component/StorekeeperOrders";
+import StorekeeperOrders from "./pages/Dashboards/StoreKeeper/StorekeeperOrders";
 import EditProduct from "./pages/Dashboards/dashboard component/EditProduct";
+import AddAmounts from "./pages/Dashboards/StoreKeeper/AddAmounts";
+import AddProduct from "./pages/Dashboards/StoreKeeper/AddProduct";
 
 function App() {
   return (
@@ -34,6 +36,8 @@ function App() {
           <Route exact path="all-product" element={<AdminProducts />} />
           <Route exact path="orders" element={<StorekeeperOrders />} />
           <Route exact path="edit-product/:id" element={<EditProduct />} />
+          <Route exact path="add-amount/:id" element={<AddAmounts />} />
+          <Route exact path="add-product" element={<AddProduct />} />
         </Route>
       </Routes>
       {/* <Footer /> */}

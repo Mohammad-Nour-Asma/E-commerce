@@ -33,6 +33,7 @@ const Products = () => {
       setProducts(response.data.products);
       setLoading(false);
     } catch (ex) {
+      console.log(ex);
       setError(true);
       setLoading(false);
     }

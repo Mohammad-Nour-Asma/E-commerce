@@ -7,6 +7,7 @@ import {
 } from "../../../assest/Api/Api";
 import Error from "../../../components/Error/Error";
 import NoResults from "../../../components/No resualts/NoResults";
+import NewDate from "../../../components/Orders/NewDate";
 import Popup from "../../../components/popup/Popup";
 import Spinner from "../../../components/Spinner/Spinner";
 import styles from "../AccountantDashboard.module.css";
@@ -139,10 +140,20 @@ const AdminProducts = () => {
                     </td>
                     <td>{item.ram}</td>
                     <td>{item.processor}</td>
-                    <td>{item.amount_in_warehouse}</td>
+                    <td
+                      className={
+                        item.amount_in_warehouse === 0
+                          ? ` ${styles.warning}`
+                          : ""
+                      }
+                    >
+                      {item.amount_in_warehouse}
+                    </td>
                     <td>${item.price_for_selling}</td>
                     <td>{item.brand}</td>
-                    <td>{item.created_at}</td>
+                    <td>
+                      <NewDate date={item.craeted_at} />
+                    </td>
                     <td>
                       <Link
                         state={{ item, name: item.name }}
@@ -154,7 +165,8 @@ const AdminProducts = () => {
                     </td>
                     <td>
                       <Link
-                        to={`/storekeeper/add-prodcut`}
+                        state={{ product: item }}
+                        to={`/storekeeper/add-amount/${item.id}`}
                         className={styles.button}
                       >
                         Add

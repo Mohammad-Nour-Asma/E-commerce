@@ -20,7 +20,7 @@ class ProductsBrowse extends JsonResource
             'id'=> $this->id,
             'price'=>$this->price_for_selling,
             'name'=>$this->name,
-            'image'=>$this->images->first()->src,
+            'image'=>$this->images->first()?->src,
         ];
     }
 }

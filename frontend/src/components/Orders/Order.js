@@ -3,15 +3,16 @@ import styles from "./Order.module.css";
 import OrderItem from "./OrderItem";
 import cartstyles from "../../pages/Cart/Cart.module.css";
 import Popup from "../popup/Popup";
+import Date from "./NewDate";
+import NewDate from "./NewDate";
 
-const Order = ({ order, makePayment, admin }) => {
-  const date = new Date(order.date);
+const Order = ({ order, makePayment, admin, message }) => {
   const [pop, setPop] = useState();
 
   return (
     <>
       <Popup
-        message={"Do You Want To Coifirm Payment ? "}
+        message={message}
         setPop={setPop}
         pop={pop}
         hitApi={makePayment}
@@ -37,7 +38,7 @@ const Order = ({ order, makePayment, admin }) => {
           </div>
           <div className={styles.orderInfo}>
             <div>
-              <div className={styles.date}>{date.toLocaleString()}</div>
+              <NewDate date={order.date} />
               <div className={styles.user}>
                 <span>user name: {order.user.name}</span>
                 <span>user email: {order.user.email}</span>
