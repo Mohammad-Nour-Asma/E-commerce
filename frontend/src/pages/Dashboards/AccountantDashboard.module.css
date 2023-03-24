@@ -52,6 +52,10 @@
 
 }
 
+.table td {
+    padding: 0.5rem;
+}
+
 .table>.tableHeader {
     background: var(--main-color);
     color: #fff;

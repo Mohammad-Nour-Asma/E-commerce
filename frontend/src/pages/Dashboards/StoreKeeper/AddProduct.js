@@ -9,7 +9,15 @@ const AddProduct = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [item, setItem] = useState({});
+  const [item, setItem] = useState({
+    name: "",
+    processor: "",
+    ram: 1,
+    price_for_selling: 1,
+    description: "",
+    brand_id: 1,
+    imagesFiles: [],
+  });
   const [pop, setPop] = useState();
 
   const addProductHandler = async () => {

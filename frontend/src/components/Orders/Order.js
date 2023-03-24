@@ -5,6 +5,7 @@ import cartstyles from "../../pages/Cart/Cart.module.css";
 import Popup from "../popup/Popup";
 import Date from "./NewDate";
 import NewDate from "./NewDate";
+import StatusButtons from "./StatusButtons";
 
 const Order = ({ order, makePayment, admin, message }) => {
   const [pop, setPop] = useState();
@@ -36,38 +37,12 @@ const Order = ({ order, makePayment, admin, message }) => {
             <span>Total Price:</span>
             <span>${order.total_price}</span>
           </div>
-          <div className={styles.orderInfo}>
-            <div>
-              <NewDate date={order.date} />
-              <div className={styles.user}>
-                <span>user name: {order.user.name}</span>
-                <span>user email: {order.user.email}</span>
-              </div>
-            </div>
-            <div className={styles.status}>
-              <span
-                onClick={() => {
-                  if (makePayment) {
-                    setPop("open");
-                  }
-                }}
-                className={
-                  makePayment && !order.paid
-                    ? `${styles.accountant} ${styles.false}`
-                    : order.paid
-                    ? `${styles.true}`
-                    : `${styles.false}`
-                }
-              >
-                {order.paid ? "Paid" : "Not Paid"}
-              </span>
-              <span
-                className={order.ready ? `${styles.true}` : `${styles.false}`}
-              >
-                {order.ready ? "Ready" : "Not Ready"}
-              </span>
-            </div>
-          </div>
+
+          <StatusButtons
+            makePayment={makePayment}
+            setPop={setPop}
+            order={order}
+          />
         </div>
       </div>
     </>

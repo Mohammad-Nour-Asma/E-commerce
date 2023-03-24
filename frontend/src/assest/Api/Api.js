@@ -23,3 +23,4 @@ export const get_suppliers_url = `${domain}/api/storekeeper/get/suppliers`;
 export const add_amounts_url = `${domain}/api/storekeeper/amounts`;
 export const add_product_url = `${domain}/api/storekeeper/add/product`;
 export const orders_for_storekeeper_url = `${domain}/api/storekeeper/orders`;
+export const make_order_ready_url = `${domain}/api/storekeeper/ready`;
