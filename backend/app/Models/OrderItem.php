@@ -11,6 +11,6 @@ class OrderItem extends Model
     protected $guarded=[];
 
     public function product(){
-        return $this->hasOne(Product::class);
+        return $this->hasOne(Product::class,'id' );
     }
 }

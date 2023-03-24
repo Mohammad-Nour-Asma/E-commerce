@@ -16,7 +16,7 @@ class NewAmountsController extends Controller
     {
         if(auth()->user()->role->role_name == 'accountant' || 'storekeeper' || 'admin'){
        $newAmounts = NewAmount::latest()
-       ->filter(request(['accountant_checking' , 'admin_checking']))
+       ->filter(request(['accountant_checking' , 'admin_checking','supplier_id']))
        ->get();
 
        return response(['newAmounts'=>$newAmounts]);}

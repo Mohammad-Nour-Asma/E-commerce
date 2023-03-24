@@ -17,6 +17,7 @@ import StorekeeperOrders from "./pages/Dashboards/StoreKeeper/StorekeeperOrders"
 import EditProduct from "./pages/Dashboards/dashboard component/EditProduct";
 import AddAmounts from "./pages/Dashboards/StoreKeeper/AddAmounts";
 import AddProduct from "./pages/Dashboards/StoreKeeper/AddProduct";
+import NewAmounts from "./pages/Dashboards/dashboard component/NewAmounts";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route exact path="edit-product/:id" element={<EditProduct />} />
           <Route exact path="add-amount/:id" element={<AddAmounts />} />
           <Route exact path="add-product" element={<AddProduct />} />
+          <Route exact path="all-new-amounts" element={<NewAmounts />} />
         </Route>
       </Routes>
       {/* <Footer /> */}

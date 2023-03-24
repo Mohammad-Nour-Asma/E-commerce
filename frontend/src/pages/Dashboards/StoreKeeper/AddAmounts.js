@@ -44,7 +44,6 @@ const AddAmounts = () => {
       setError(false);
       const response = await axios.post(add_amounts_url, { ...amount, token });
       setLoading(false);
-      console.log(response.data);
       navigate("/storekeeper/all-product");
     } catch (error) {
       console.log(error);

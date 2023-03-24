@@ -11,6 +11,7 @@ import Spinner from "../../../components/Spinner/Spinner";
 import Error from "../../../components/Error/Error";
 import StatusButtons from "../../../components/Orders/StatusButtons";
 import Popup from "../../../components/popup/Popup";
+import NoResults from "../../../components/No resualts/NoResults";
 
 const StorekeeperOrders = () => {
   const [loading, setLoading] = useState(false);
@@ -86,9 +87,7 @@ const StorekeeperOrders = () => {
       ) : error ? (
         <Error />
       ) : orders?.length === 0 && !loading ? (
-        <div className="sides">
-          <p>Sorry, no results found.</p>
-        </div>
+        <NoResults />
       ) : (
         <div>
           <div className={styles.Ordersheader}>

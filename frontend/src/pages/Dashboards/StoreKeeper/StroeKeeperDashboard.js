@@ -24,7 +24,7 @@ const StroeKeeperDashboard = () => {
               <Link to="add-product">Add Products</Link>
             </li>
             <li>
-              <Link to="all-amount">Amounts</Link>
+              <Link to="all-new-amounts">Amounts</Link>
             </li>
             <Settings setError={setError} setLoading={setLoading} />
           </ul>

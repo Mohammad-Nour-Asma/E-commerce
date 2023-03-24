@@ -13,6 +13,7 @@
 
 .order {
     margin: 3rem 0;
+
 }
 
 .suppliersInfo span {
@@ -48,5 +49,15 @@
 }
 
 .filters button {
-    margin: 0 1rem;
+    margin: 0.5rem 1rem;
+}
+
+@media (max-width :576px) {
+    .filters button {
+        display: block;
+    }
+
+    .order {
+        overflow: scroll;
+    }
 }

@@ -27,6 +27,12 @@ class NewAmount extends Model
             $quary->where('admin_checking',$res);
         });
 
+
+        $quary->when($filters['supplier_id'] ?? false, function($quary, $supplier_id){
+
+            $quary->where('supplier_id',$supplier_id);
+        });
+
     }
     public function supplier(){
         return $this->hasOne(Supplier::class,'id');
