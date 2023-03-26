@@ -27,3 +27,7 @@ export const make_order_ready_url = `${domain}/api/storekeeper/ready`;
 export const new_amounts_url = `${domain}/api/newAmounts/get`;
 export const add_supplier_url = `${domain}/api/storekeeper/add/supplier`;
 export const add_brand_url = `${domain}/api/storekeeper/add/brand`;
+export const make_amount_ready_url = `${domain}/api/admin/confirm`;
+export const make_amount_payment_url = `${domain}/api/accountant/confirmNewAmounts`;
+export const get_users_url = `${domain}/api/admin/users`;
+export const get_user_orders_url = `${domain}/api/admin/user/order`;

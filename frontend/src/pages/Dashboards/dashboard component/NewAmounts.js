@@ -1,15 +1,21 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { get_suppliers_url, new_amounts_url } from "../../../assest/Api/Api";
+import {
+  get_suppliers_url,
+  make_amount_payment_url,
+  make_amount_ready_url,
+  new_amounts_url,
+} from "../../../assest/Api/Api";
 import Error from "../../../components/Error/Error";
 import NoResults from "../../../components/No resualts/NoResults";
 import Spinner from "../../../components/Spinner/Spinner";
 import storekeeperStyles from "../StoreKeeper/StoreKeeper.module.css";
-import styles from "../AccountantDashboard.module.css";
+import styles from "../Accountant/AccountantDashboard.module.css";
 import NewAmountsInfo from "./NewAmountsInfo";
+import Popup from "../../../components/popup/Popup";
 
-const NewAmounts = () => {
+const NewAmounts = ({ admin, acc }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [newAmounts, setNewAmounts] = useState([]);
@@ -17,6 +23,8 @@ const NewAmounts = () => {
   const [accountant_checking, setAccountant_checking] = useState();
   const [suppliers, setSuppliers] = useState([]);
   const [supplier_id, setSupplier_id] = useState();
+  const [newAmount_id, setNewAmount_id] = useState();
+  const [pop, setPop] = useState();
   const navigate = useNavigate();
 
   const getSuppliers = async () => {
@@ -59,6 +67,54 @@ const NewAmounts = () => {
     }
   };
 
+  const makeNewAmountReady = async () => {
+    const token = localStorage.getItem("token");
+    try {
+      setError(false);
+      setLoading(true);
+      const resp = await axios.post(make_amount_ready_url, {
+        token,
+        newAmount_id,
+      });
+
+      setLoading(false);
+
+      if (resp.data.status === "Authorization Token not found") {
+        navigate("/");
+        localStorage.removeItem("token");
+      }
+      getAmounts();
+    } catch (error) {
+      setLoading(false);
+      setError(true);
+      console.log(error);
+    }
+  };
+
+  const makePayment = async () => {
+    const token = localStorage.getItem("token");
+    try {
+      setError(false);
+      setLoading(true);
+      const resp = await axios.post(make_amount_payment_url, {
+        token,
+        newAmount_id,
+      });
+
+      setLoading(false);
+
+      if (resp.data.status === "Authorization Token not found") {
+        navigate("/");
+        localStorage.removeItem("token");
+      }
+      getAmounts();
+    } catch (error) {
+      setLoading(false);
+      setError(true);
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getAmounts();
   }, [accountant_checking, supplier_id, admin_checking]);
@@ -69,6 +125,18 @@ const NewAmounts = () => {
 
   return (
     <div>
+      <Popup
+        pop={pop}
+        setPop={setPop}
+        message={
+          admin
+            ? "Are You Sure Of Confirming The New Amounts ?"
+            : acc
+            ? "Are You Sure Of Confirm Payment ?"
+            : ""
+        }
+        hitApi={admin ? makeNewAmountReady : acc ? makePayment : ""}
+      />
       <h2 style={{ textAlign: "center" }}>New Amounts</h2>
       <div style={{ marginTop: "0.5rem" }}>
         <span>{newAmounts?.length} Orders Found</span>
@@ -114,8 +182,12 @@ const NewAmounts = () => {
               Filter On Supplier
             </option>
             <option value="">All</option>
-            {suppliers.map((item) => {
-              return <option value={item.id}>{item.name}</option>;
+            {suppliers?.map((item) => {
+              return (
+                <option key={item.id} value={item.id}>
+                  {item.name}
+                </option>
+              );
             })}
           </select>
         </div>
@@ -166,7 +238,13 @@ const NewAmounts = () => {
                     </tbody>
                   </table>
                   <div className={storekeeperStyles.orderInfo}>
-                    <NewAmountsInfo amount={amount} />
+                    <NewAmountsInfo
+                      amount={amount}
+                      makeNewAmountReady={admin}
+                      makePayment={acc}
+                      setPop={setPop}
+                      setNewAmountId={setNewAmount_id}
+                    />
                   </div>
                 </div>
               );

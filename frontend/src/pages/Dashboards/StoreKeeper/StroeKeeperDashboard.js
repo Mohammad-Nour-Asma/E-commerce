@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 
 import Settings from "../../Profile/Settings";
-import styles from "../AccountantDashboard.module.css";
+import styles from "../Accountant/AccountantDashboard.module.css";
 import Spinner from "../../../components/Spinner/Spinner";
 import Error from "../../../components/Error/Error";
 

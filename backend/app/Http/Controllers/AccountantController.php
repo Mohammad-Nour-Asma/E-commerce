@@ -37,7 +37,8 @@ class AccountantController extends Controller
 
     public function confirmNewAmounts()
     {
-        $newAmounts = NewAmount::find(request('newAmounts_id'));
+        $newAmounts = NewAmount::find(request('newAmount_id'));
+
         if($newAmounts?->admin_checking){
             $newAmounts->update(['accountant_checking'=>true]);
             $product =Product::find($newAmounts->product_id);

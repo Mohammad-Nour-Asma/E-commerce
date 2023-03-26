@@ -27,6 +27,7 @@ const NewAmountsInfo = ({
         <span
           onClick={() => {
             if (makePayment && !amount.accountant_checking) {
+              setNewAmountId(amount.id);
               setPop("open");
             }
           }}

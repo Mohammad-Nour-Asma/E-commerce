@@ -15,11 +15,15 @@ class SupplierContoller extends Controller
     }
     public function add()
     {
+        if(auth()->user()->role->role_name == 'accountant' || 'storekeeper' || 'admin'){
         $supplier = Supplier::create([
             'name'=>request('name'),
             'email'=>request('email'),
             'phone'=>request('phone'),
     ]);
     return response(['supplier' => $supplier]);
+}
+            return response(['message'=>'unauthorized']);
+
     }
 }

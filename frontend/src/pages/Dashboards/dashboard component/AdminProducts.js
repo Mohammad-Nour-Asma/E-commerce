@@ -10,7 +10,7 @@ import NoResults from "../../../components/No resualts/NoResults";
 import NewDate from "../../../components/Orders/NewDate";
 import Popup from "../../../components/popup/Popup";
 import Spinner from "../../../components/Spinner/Spinner";
-import styles from "../AccountantDashboard.module.css";
+import styles from "../Accountant/AccountantDashboard.module.css";
 
 const AdminProducts = ({ sk }) => {
   const [pop, setPop] = useState();
@@ -156,11 +156,10 @@ const AdminProducts = ({ sk }) => {
                     <td>${item.price_for_selling}</td>
                     <td>{item.brand}</td>
                     <td>
-                      <NewDate date={item.craeted_at} />
+                      <NewDate date={item.created_at} />
                     </td>
                     {sk && (
                       <>
-                        {" "}
                         <td>
                           <Link
                             state={{ item, name: item.name }}

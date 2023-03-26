@@ -19,7 +19,7 @@ class NewAmountsResource extends JsonResource
         return [
             "id"=> $this->id,
             "product_id"=>  $this->product_id,
-            "amount_to_add"=>  $this->iamount_to_addd,
+            "amount_to_add"=>  $this->amount_to_add,
             "price_for_one"=>  $this->price_for_one,
             "total_price"=>  $this->total_price,
             "supplier_id"=>  $this->supplier_id,

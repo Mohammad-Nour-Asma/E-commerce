@@ -10,18 +10,18 @@ const ProductBox = (props) => {
       <div className={styles.productLayout}>
         <img
           className={styles.image}
-          src={`${domain}${props.item.image}`}
+          src={`${domain}${props?.item?.image}`}
           alt="mobile"
         />
         <div className={styles.toProduct}>
-          <Link to={`/details/${props.item.id}`}>
+          <Link to={`/details/${props?.item?.id}`}>
             <IoSearchCircleSharp />
           </Link>
         </div>
       </div>
       <div className={styles.productInfo}>
-        <h4>{props.item.name}</h4>
-        <span>${props.item.price}</span>
+        <h4>{props?.item?.name}</h4>
+        <span>${props?.item?.price}</span>
       </div>
     </div>
   );

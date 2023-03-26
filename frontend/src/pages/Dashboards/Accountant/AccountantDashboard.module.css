@@ -132,3 +132,23 @@
     color: #f35f54;
     font-weight: bold;
 }
+
+.filters {
+    margin-top: 1rem;
+
+}
+
+.filters button {
+    margin: 0 0.5rem;
+}
+
+@media (max-width :576px) {
+    .filters button {
+        display: block;
+        margin-top: 0.5rem;
+    }
+}
+
+.acc {
+    margin: 0 1.5rem;
+}

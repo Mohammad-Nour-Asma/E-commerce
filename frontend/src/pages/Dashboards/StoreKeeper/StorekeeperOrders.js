@@ -5,7 +5,7 @@ import {
   make_order_ready_url,
   orders_for_storekeeper_url,
 } from "../../../assest/Api/Api";
-import styles from "../AccountantDashboard.module.css";
+import styles from "../Accountant/AccountantDashboard.module.css";
 import storekeeperStyles from "./StoreKeeper.module.css";
 import Spinner from "../../../components/Spinner/Spinner";
 import Error from "../../../components/Error/Error";

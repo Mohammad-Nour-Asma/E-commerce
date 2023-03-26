@@ -10,7 +10,7 @@ import Login from "./pages/Login & Register/Login";
 import Products from "./pages/Products/Products";
 import Register from "./pages/Login & Register/Register";
 import Profile from "./pages/Profile/Profile";
-import AccountantDashboard from "./pages/Dashboards/AccountantDashboard";
+import AccountantDashboard from "./pages/Dashboards/Accountant/AccountantDashboard";
 import StroeKeeperDashboard from "./pages/Dashboards/StoreKeeper/StroeKeeperDashboard";
 import AdminProducts from "./pages/Dashboards/dashboard component/AdminProducts";
 import StorekeeperOrders from "./pages/Dashboards/StoreKeeper/StorekeeperOrders";
@@ -21,6 +21,9 @@ import NewAmounts from "./pages/Dashboards/dashboard component/NewAmounts";
 import AddSupplier from "./pages/Dashboards/StoreKeeper/AddSupplier";
 import AddBrand from "./pages/Dashboards/StoreKeeper/AddBrand";
 import AdminDashboard from "./pages/Dashboards/Admin/AdminDashboard";
+import Users from "./pages/Dashboards/Admin/Users";
+import UserOrders from "./pages/Dashboards/Admin/UserOrders";
+import Order from "./pages/Dashboards/Accountant/Orders";
 
 function App() {
   return (
@@ -35,7 +38,10 @@ function App() {
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/profile" element={<Profile />} />
-        <Route exact path="/accountant" element={<AccountantDashboard />} />
+        <Route exact path="/accountant" element={<AccountantDashboard />}>
+          <Route exact path="orders" element={<Order />} />
+          <Route exact path="new-amounts" element={<NewAmounts acc={true} />} />
+        </Route>
 
         <Route exact path="/storekeeper" element={<StroeKeeperDashboard />}>
           <Route
@@ -53,6 +59,13 @@ function App() {
         </Route>
         <Route exact path="/admin" element={<AdminDashboard />}>
           <Route exact path="all-products" element={<AdminProducts />} />
+          <Route
+            exact
+            path="all-new-amounts"
+            element={<NewAmounts admin={true} />}
+          />
+          <Route exact path="users" element={<Users />} />
+          <Route exact path="user-orders/:id" element={<UserOrders />} />
         </Route>
       </Routes>
       {/* <Footer /> */}

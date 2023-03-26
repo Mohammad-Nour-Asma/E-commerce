@@ -23,14 +23,16 @@ const Products = () => {
     try {
       setLoading(true);
       setError(false);
-      setProducts([]);
+
       const response = await axios.post(get_products_url, {
         search: search,
         ram: ram,
         brand: brandId,
         price: price,
       });
+
       setProducts(response.data.products);
+
       setLoading(false);
     } catch (ex) {
       console.log(ex);
@@ -44,7 +46,6 @@ const Products = () => {
       setBrandsError(false);
       const response = await axios.get(get_brands_url);
       setBrands(response.data.brands);
-      console.log(response);
     } catch (ex) {
       setBrandsError(true);
     }
@@ -93,12 +94,12 @@ const Products = () => {
                   return (
                     <button
                       onClick={() => {
-                        setBrandId(item.id);
+                        setBrandId(item?.id);
                       }}
-                      className={brandId === item.id ? `${styles.active}` : ""}
-                      key={item.id}
+                      className={brandId === item?.id ? `${styles.active}` : ""}
+                      key={item?.id}
                     >
-                      {item.name}
+                      {item?.name}
                     </button>
                   );
                 })}
@@ -147,17 +148,17 @@ const Products = () => {
           </button>
         </aside>
         <div className={styles.products}>
-          <div className={styles.header}>{products.length} Products Found</div>
+          <div className={styles.header}>{products?.length} Products Found</div>
           {loading && <Spinner />}
           {error ? (
             <Error />
-          ) : products.length === 0 && !loading ? (
+          ) : products?.length === 0 && !loading ? (
             <div className="sides">
               <p>Sorry, no products matched your search.</p>
             </div>
           ) : (
             <div className={styles.boxes}>
-              {products.map((item) => {
+              {products?.map((item) => {
                 return <ProductBox item={item} key={item.id} />;
               })}
             </div>

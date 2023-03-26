@@ -15,18 +15,25 @@ class ProductController extends Controller
 {
     //
     public function index (){
-        if(auth()->user()->role->role_name === 'accountant' ||'admin'){
-        return response([
-            "products"=>Product::latest()
+        $products=[];
+        Product::latest()
                 ->filter(\request(['search' , 'brand' , 'ram', 'price']))
                 ->get()
                 ->map(function ($item ){
+                    if($item->amount_in_warehouse>0)
                     return new ProductsBrowse($item);
-                }),
+                })->each(function($item)use(&$products){
+                    if($item !== null){
+                        $products[] = $item;
+                    }
+                });
+
+        return response([
+            "products"=>$products,
                 'status'=>200,
             ]);
-        }
-        return response(['message'=>'unauthorized']);
+
+
 
     }
 
@@ -38,17 +45,20 @@ class ProductController extends Controller
         ]);
     }
     public function getForAdmins (){
+        $role = auth()->user()->role->role_name;
+        if($role === 'admin' || $role === 'storekeeper'){
+                    return response([
+                        "products"=>Product::latest()
+                            ->filter(\request(['search' , 'brand' , 'ram', 'price','amount_in_warehouse']))
+                            ->get()
+                             ->map(function ($item ){
+                                return new ProductResource($item);
+                            }),
+                            'status'=>200,
+                        ]);
 
-
-        return response([
-            "products"=>Product::latest()
-                ->filter(\request(['search' , 'brand' , 'ram', 'price','amount_in_warehouse']))
-                ->get()
-                 ->map(function ($item ){
-                    return new ProductResource($item);
-                }),
-                'status'=>200,
-            ]);
+        }
+           return response(['message'=>'unauthorized']);
     }
     public function delete()
     {

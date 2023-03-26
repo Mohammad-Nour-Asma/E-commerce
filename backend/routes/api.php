@@ -71,7 +71,6 @@ Route::group(['middleware' => ['jwt.verify']], function() {
         Route::post('/storekeeper/delete' , [ProductController::class , 'delete']);
         Route::post('/storekeeper/edit' , [ProductController::class , 'editProduct']);
         Route::post('/storekeeper/add/product' , [ProductController::class , 'addProduct']);
-        Route::post('/storekeeper/get/suppliers' , [SupplierContoller::class , 'index']);
         Route::post('/storekeeper/add/supplier' , [SupplierContoller::class , 'add']);
         Route::post('/storekeeper/add/brand' , [BrandController::class , 'add']);
 
@@ -85,6 +84,7 @@ Route::group(['middleware' => ['jwt.verify']], function() {
 
     });
 
+    Route::post('/storekeeper/get/suppliers' , [SupplierContoller::class , 'index']);
     Route::post('/admins/products' , [ProductController::class , 'getForAdmins']);
     Route::post('/newAmounts/get' , [NewAmountsController::class , 'index']);
 
