@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class NewAmount extends Model
 {
     protected $guarded =[];
-    protected $with=['supplier','product'];
+
     use HasFactory;
 
     public function scopeFilter($quary, array $filters)
@@ -34,11 +34,7 @@ class NewAmount extends Model
         });
 
     }
-    public function supplier(){
-        return $this->hasOne(Supplier::class,'id');
-    }
-    public function product(){
-        return $this->hasOne(Product::class,'id');
-    }
+
+
 
 }

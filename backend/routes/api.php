@@ -66,7 +66,6 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     //StoreKeeper
     Route::group(['middleware' => ['storekeeper']], function() {
         Route::post('/storekeeper/orders' , [StorekeeperController::class , 'index']);
-        Route::post('/admins/products' , [ProductController::class , 'getForAdmins']);
         Route::post('/storekeeper/ready' , [StorekeeperController::class , 'setReady']);
         Route::post('/storekeeper/amounts' , [StorekeeperController::class , 'orderAmounts']);
         Route::post('/storekeeper/delete' , [ProductController::class , 'delete']);
@@ -74,18 +73,19 @@ Route::group(['middleware' => ['jwt.verify']], function() {
         Route::post('/storekeeper/add/product' , [ProductController::class , 'addProduct']);
         Route::post('/storekeeper/get/suppliers' , [SupplierContoller::class , 'index']);
         Route::post('/storekeeper/add/supplier' , [SupplierContoller::class , 'add']);
+        Route::post('/storekeeper/add/brand' , [BrandController::class , 'add']);
 
     });
 
     //admins
     Route::group(['middleware' => ['admin']], function() {
-        Route::post('/admin/products' , [ProductController::class , 'getForAdmins']);
         Route::post('/admin/users' , [AdminController::class , 'getUsers']);
         Route::post('/admin/user/order' , [AdminController::class , 'getUserOrders']);
         Route::post('/admin/confirm' , [AdminController::class , 'confirmAmounts']);
 
     });
 
+    Route::post('/admins/products' , [ProductController::class , 'getForAdmins']);
     Route::post('/newAmounts/get' , [NewAmountsController::class , 'index']);
 
 

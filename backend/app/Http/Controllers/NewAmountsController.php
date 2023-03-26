@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\NewAmountsResource;
 use App\Models\NewAmount;
 use App\Models\Product;
 use Illuminate\Routing\Controller;
@@ -17,9 +18,12 @@ class NewAmountsController extends Controller
         if(auth()->user()->role->role_name == 'accountant' || 'storekeeper' || 'admin'){
        $newAmounts = NewAmount::latest()
        ->filter(request(['accountant_checking' , 'admin_checking','supplier_id']))
-       ->get();
+       ->get()->map(function($item){
+         return new NewAmountsResource($item);
+       });
 
-       return response(['newAmounts'=>$newAmounts]);}
+       return response(['newAmounts'=>$newAmounts]);
+    }
        return response(['message'=>'unauthorized']);
     }
 

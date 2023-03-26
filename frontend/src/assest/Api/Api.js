@@ -25,3 +25,5 @@ export const add_product_url = `${domain}/api/storekeeper/add/product`;
 export const orders_for_storekeeper_url = `${domain}/api/storekeeper/orders`;
 export const make_order_ready_url = `${domain}/api/storekeeper/ready`;
 export const new_amounts_url = `${domain}/api/newAmounts/get`;
+export const add_supplier_url = `${domain}/api/storekeeper/add/supplier`;
+export const add_brand_url = `${domain}/api/storekeeper/add/brand`;

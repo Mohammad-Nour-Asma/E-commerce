@@ -15,7 +15,7 @@ class ProductController extends Controller
 {
     //
     public function index (){
-
+        if(auth()->user()->role->role_name === 'accountant' ||'admin'){
         return response([
             "products"=>Product::latest()
                 ->filter(\request(['search' , 'brand' , 'ram', 'price']))
@@ -25,6 +25,9 @@ class ProductController extends Controller
                 }),
                 'status'=>200,
             ]);
+        }
+        return response(['message'=>'unauthorized']);
+
     }
 
     public function details(Product $product){

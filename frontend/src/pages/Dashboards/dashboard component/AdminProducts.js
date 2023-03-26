@@ -12,7 +12,7 @@ import Popup from "../../../components/popup/Popup";
 import Spinner from "../../../components/Spinner/Spinner";
 import styles from "../AccountantDashboard.module.css";
 
-const AdminProducts = () => {
+const AdminProducts = ({ sk }) => {
   const [pop, setPop] = useState();
   const [productId, setProductId] = useState();
   const [products, setProducts] = useState([]);
@@ -125,9 +125,13 @@ const AdminProducts = () => {
                 <th>price for selling</th>
                 <th>brand</th>
                 <th>created</th>
-                <th></th>
-                <th></th>
-                <th></th>
+                {sk && (
+                  <>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                  </>
+                )}
               </tr>
             </thead>
             <tbody>
@@ -154,37 +158,42 @@ const AdminProducts = () => {
                     <td>
                       <NewDate date={item.craeted_at} />
                     </td>
-                    <td>
-                      <Link
-                        state={{ item, name: item.name }}
-                        to={`/storekeeper/edit-product/${item.id}`}
-                        className={styles.button}
-                      >
-                        Edit
-                      </Link>
-                    </td>
-                    <td>
-                      <Link
-                        state={{ product: item }}
-                        to={`/storekeeper/add-amount/${item.id}`}
-                        className={styles.button}
-                      >
-                        Add
-                      </Link>
-                    </td>
-                    <td>
-                      {item.amount_in_warehouse > 0 && (
-                        <button
-                          onClick={() => {
-                            setPop("open");
-                            setProductId(item.id);
-                          }}
-                          className={`${styles.button} ${styles.delete}`}
-                        >
-                          delete
-                        </button>
-                      )}
-                    </td>
+                    {sk && (
+                      <>
+                        {" "}
+                        <td>
+                          <Link
+                            state={{ item, name: item.name }}
+                            to={`/storekeeper/edit-product/${item.id}`}
+                            className={styles.button}
+                          >
+                            Edit
+                          </Link>
+                        </td>
+                        <td>
+                          <Link
+                            state={{ product: item }}
+                            to={`/storekeeper/add-amount/${item.id}`}
+                            className={styles.button}
+                          >
+                            Add
+                          </Link>
+                        </td>
+                        <td>
+                          {item.amount_in_warehouse > 0 && (
+                            <button
+                              onClick={() => {
+                                setPop("open");
+                                setProductId(item.id);
+                              }}
+                              className={`${styles.button} ${styles.delete}`}
+                            >
+                              delete
+                            </button>
+                          )}
+                        </td>
+                      </>
+                    )}
                   </tr>
                 );
               })}

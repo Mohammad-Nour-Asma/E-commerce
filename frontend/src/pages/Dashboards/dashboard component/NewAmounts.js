@@ -7,14 +7,12 @@ import NoResults from "../../../components/No resualts/NoResults";
 import Spinner from "../../../components/Spinner/Spinner";
 import storekeeperStyles from "../StoreKeeper/StoreKeeper.module.css";
 import styles from "../AccountantDashboard.module.css";
-import StatusButtons from "../../../components/Orders/StatusButtons";
 import NewAmountsInfo from "./NewAmountsInfo";
 
 const NewAmounts = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [newAmounts, setNewAmounts] = useState([]);
-  const [pop, setPop] = useState();
   const [admin_checking, setAdmin_checking] = useState();
   const [accountant_checking, setAccountant_checking] = useState();
   const [suppliers, setSuppliers] = useState([]);

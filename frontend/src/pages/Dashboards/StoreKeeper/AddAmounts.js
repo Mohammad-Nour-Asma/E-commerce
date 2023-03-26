@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { add_amounts_url, get_suppliers_url } from "../../../assest/Api/Api";
 import Error from "../../../components/Error/Error";
 import Popup from "../../../components/popup/Popup";
@@ -79,27 +79,30 @@ const AddAmounts = () => {
           </h2>
           <div className={styles.suppliers}>
             <p>Choose Supplier</p>
-            <select
-              defaultValue={"selected"}
-              onChange={(e) => {
-                const item = suppliers.find(
-                  (item) => item.id === +e.target.value
-                );
-                setSupplier(item);
-                setAmount({ ...amount, supplier_id: e.target.value });
-              }}
-            >
-              <option hidden disabled value={"selected"}>
-                choose supplier
-              </option>
-              {suppliers?.map((item) => {
-                return (
-                  <option key={item.id} value={item.id}>
-                    {item.name}
-                  </option>
-                );
-              })}
-            </select>
+            <div className={formStyles.input}>
+              <select
+                defaultValue={"selected"}
+                onChange={(e) => {
+                  const item = suppliers.find(
+                    (item) => item.id === +e.target.value
+                  );
+                  setSupplier(item);
+                  setAmount({ ...amount, supplier_id: e.target.value });
+                }}
+              >
+                <option hidden disabled value={"selected"}>
+                  choose supplier
+                </option>
+                {suppliers?.map((item) => {
+                  return (
+                    <option key={item.id} value={item.id}>
+                      {item.name}
+                    </option>
+                  );
+                })}
+              </select>
+              <Link to="/storekeeper/add-supplier">Add New Supplier ?</Link>
+            </div>
             {supplierAuth && (
               <p style={{ color: "red", fontSize: "0.8rem" }}>
                 Supplier Is Required

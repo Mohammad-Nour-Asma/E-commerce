@@ -9,7 +9,6 @@ const NewAmountsInfo = ({
   setNewAmountId,
   makeNewAmountReady,
 }) => {
-  console.log(amount);
   return (
     <div className={styles.orderInfo}>
       <div>

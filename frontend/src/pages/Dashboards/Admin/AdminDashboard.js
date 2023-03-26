@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Link, Outlet, useNavigate } from "react-router-dom";
-
-import Settings from "../../Profile/Settings";
+import { Link, useNavigate, Outlet } from "react-router-dom";
 import styles from "../AccountantDashboard.module.css";
 import Spinner from "../../../components/Spinner/Spinner";
 import Error from "../../../components/Error/Error";
+import Settings from "../../Profile/Settings";
 
-const StroeKeeperDashboard = () => {
+const AdminDashboard = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const navigate = useNavigate();
-  useEffect(() => {
-    navigate("all-products");
-  }, []);
+  useEffect(() => {}, []);
   return (
     <main className={styles.dashboard}>
       <div className="grid">
@@ -22,20 +19,12 @@ const StroeKeeperDashboard = () => {
               <Link to="all-products">Products</Link>
             </li>
             <li>
-              <Link to="orders">Orders</Link>
-            </li>
-            <li>
-              <Link to="add-product">Add Products</Link>
-            </li>
-            <li>
               <Link to="all-new-amounts">Amounts</Link>
             </li>
             <li>
-              <Link to="add-supplier">Add Supplier</Link>
+              <Link to="all-new-amounts">Users</Link>
             </li>
-            <li>
-              <Link to="add-brand">Add New Brand</Link>
-            </li>
+
             <Settings setError={setError} setLoading={setLoading} />
           </ul>
         </aside>
@@ -48,4 +37,4 @@ const StroeKeeperDashboard = () => {
   );
 };
 
-export default StroeKeeperDashboard;
+export default AdminDashboard;

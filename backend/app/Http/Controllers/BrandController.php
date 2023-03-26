@@ -13,4 +13,12 @@ class BrandController extends Controller
   public function index(){
       return \response(['brands'=>Brand::all()]);
   }
+   public function add()
+    {
+        $brand = Brand::create([
+            'name'=>request('name'),
+
+    ]);
+    return response(['brand' => $brand]);
+    }
 }

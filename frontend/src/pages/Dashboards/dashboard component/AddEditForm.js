@@ -4,6 +4,7 @@ import Spinner from "../../../components/Spinner/Spinner";
 import Error from "../../../components/Error/Error";
 import { get_brands_url } from "../../../assest/Api/Api";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const AddEditForm = ({
   loading,
@@ -50,6 +51,25 @@ const AddEditForm = ({
           }}
           className={formStyle.form}
         >
+          <div className={formStyle.input}>
+            <label htmlFor="brand">Brand</label>
+
+            <select
+              onChange={(e) => {
+                setItem({ ...item, brand_id: e.target.value });
+              }}
+              defaultValue={item.brand_id}
+            >
+              {brands?.map((brand) => {
+                return (
+                  <option key={brand.id} value={brand.id}>
+                    {brand.name}
+                  </option>
+                );
+              })}
+            </select>
+            <Link to={"/storekeeper/add-brand"}>Add New Brand ?</Link>
+          </div>
           <div className={formStyle.input}>
             <label htmlFor="name">Name</label>
             <input
@@ -112,24 +132,7 @@ const AddEditForm = ({
               value={item.description}
             ></textarea>
           </div>
-          <div className={formStyle.input}>
-            <label htmlFor="brand">Brand</label>
 
-            <select
-              onChange={(e) => {
-                setItem({ ...item, brand_id: e.target.value });
-              }}
-              defaultValue={item.brand_id}
-            >
-              {brands?.map((brand) => {
-                return (
-                  <option key={brand.id} value={brand.id}>
-                    {brand.name}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
           <div className={formStyle.input}>
             <label>Choose Images</label>
             <input

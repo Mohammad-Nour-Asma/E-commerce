@@ -18,6 +18,9 @@ import EditProduct from "./pages/Dashboards/dashboard component/EditProduct";
 import AddAmounts from "./pages/Dashboards/StoreKeeper/AddAmounts";
 import AddProduct from "./pages/Dashboards/StoreKeeper/AddProduct";
 import NewAmounts from "./pages/Dashboards/dashboard component/NewAmounts";
+import AddSupplier from "./pages/Dashboards/StoreKeeper/AddSupplier";
+import AddBrand from "./pages/Dashboards/StoreKeeper/AddBrand";
+import AdminDashboard from "./pages/Dashboards/Admin/AdminDashboard";
 
 function App() {
   return (
@@ -33,13 +36,23 @@ function App() {
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/profile" element={<Profile />} />
         <Route exact path="/accountant" element={<AccountantDashboard />} />
+
         <Route exact path="/storekeeper" element={<StroeKeeperDashboard />}>
-          <Route exact path="all-product" element={<AdminProducts />} />
+          <Route
+            exact
+            path="all-products"
+            element={<AdminProducts sk={true} />}
+          />
           <Route exact path="orders" element={<StorekeeperOrders />} />
           <Route exact path="edit-product/:id" element={<EditProduct />} />
           <Route exact path="add-amount/:id" element={<AddAmounts />} />
           <Route exact path="add-product" element={<AddProduct />} />
           <Route exact path="all-new-amounts" element={<NewAmounts />} />
+          <Route exact path="add-supplier" element={<AddSupplier />} />
+          <Route exact path="add-brand" element={<AddBrand />} />
+        </Route>
+        <Route exact path="/admin" element={<AdminDashboard />}>
+          <Route exact path="all-products" element={<AdminProducts />} />
         </Route>
       </Routes>
       {/* <Footer /> */}

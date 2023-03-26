@@ -30,3 +30,13 @@
     margin: 2rem auto;
 
 }
+
+.input a {
+    display: block;
+    padding-left: 0.3rem;
+    font-size: var(--small-font-size);
+    margin-top: 0.2rem;
+    color: #999;
+
+
+}
