@@ -46,7 +46,7 @@ const EditProduct = (props) => {
       );
 
       setLoading(false);
-      navigate("/storekeeper/all-product");
+      navigate("/all-products");
     } catch (ex) {
       console.log(ex);
       setError(true);

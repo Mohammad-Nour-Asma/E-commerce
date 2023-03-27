@@ -14,16 +14,13 @@ const About = () => {
         <div className={` container ${styles.info}`}>
           <h1 className={styles.heading}>Our Story</h1>
           <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat
-            accusantium sapiente tempora sed dolore esse deserunt eaque
-            excepturi, delectus error accusamus vel eligendi, omnis beatae.
-            Quisquam, dicta. Eos quod quisquam esse recusandae vitae neque
-            dolore, obcaecati incidunt sequi blanditiis est exercitationem
-            molestiae delectus saepe odio eligendi modi porro eaque in libero
-            minus unde sapiente consectetur architecto. Ullam rerum, nemo iste
-            ex, eaque perspiciatis nisi, eum totam velit saepe sed quos
-            similique amet. Ex, voluptate accusamus nesciunt totam vitae esse
-            iste.
+            At our online mobile store, we are committed to providing a seamless
+            and secure shopping experience for our customers. We offer multiple
+            payment options, including credit card, PayPal, and Apple Pay, and
+            our website is designed with the latest security features to protect
+            our customers' personal and financial information. We also offer
+            fast and reliable shipping, with most orders processed and shipped
+            within 24 hours.
           </p>
         </div>
       </div>

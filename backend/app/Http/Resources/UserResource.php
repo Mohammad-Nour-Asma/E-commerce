@@ -20,6 +20,7 @@ class UserResource extends JsonResource
             "name"=>  $this->name,
             "email"=>  $this->email,
             "role"=> Role::find($this->role_id)->role_name,
+            "joind_at"=>  $this->created_at,
         ];
     }
 }

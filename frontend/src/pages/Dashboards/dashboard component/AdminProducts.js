@@ -163,7 +163,7 @@ const AdminProducts = ({ sk }) => {
                         <td>
                           <Link
                             state={{ item, name: item.name }}
-                            to={`/storekeeper/edit-product/${item.id}`}
+                            to={`/edit-product/${item.id}`}
                             className={styles.button}
                           >
                             Edit
@@ -172,7 +172,7 @@ const AdminProducts = ({ sk }) => {
                         <td>
                           <Link
                             state={{ product: item }}
-                            to={`/storekeeper/add-amount/${item.id}`}
+                            to={`/add-amount/${item.id}`}
                             className={styles.button}
                           >
                             Add

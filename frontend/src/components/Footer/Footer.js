@@ -3,9 +3,10 @@ import styles from "./Footer.module.css";
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className={styles.footer}>
       &#169; 2023 <span>Mobile Shop</span> All rights reserved
     </footer>
+  
   );
 };
 

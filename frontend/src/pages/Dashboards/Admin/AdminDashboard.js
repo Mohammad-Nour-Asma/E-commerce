@@ -10,7 +10,7 @@ const AdminDashboard = () => {
   const [error, setError] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
-    navigate("/admin/all-products");
+    navigate("/all-products");
   }, []);
   return (
     <main className={styles.dashboard}>

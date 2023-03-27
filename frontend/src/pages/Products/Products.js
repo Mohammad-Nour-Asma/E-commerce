@@ -16,7 +16,7 @@ const Products = () => {
   const [brands, setBrands] = useState([]);
   const [search, setSearch] = useState("");
   const [brandId, setBrandId] = useState("");
-  const [ram, setRam] = useState(50);
+  const [ram, setRam] = useState(200);
   const [price, setPrice] = useState(4000);
 
   const getProducts = async () => {
@@ -32,7 +32,6 @@ const Products = () => {
       });
 
       setProducts(response.data.products);
-
       setLoading(false);
     } catch (ex) {
       console.log(ex);
@@ -115,7 +114,7 @@ const Products = () => {
                 type="range"
                 name="ram"
                 min={1}
-                max={50}
+                max={200}
                 value={ram}
               />
             </div>

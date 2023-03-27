@@ -24,26 +24,18 @@ import AdminDashboard from "./pages/Dashboards/Admin/AdminDashboard";
 import Users from "./pages/Dashboards/Admin/Users";
 import UserOrders from "./pages/Dashboards/Admin/UserOrders";
 import Order from "./pages/Dashboards/Accountant/Orders";
+import { useGlobalContext } from "./context";
+import NotFound from "./pages/404/NotFound";
+import UpdateInfo from "./pages/Update/UpdateInfo";
 
 function App() {
-  return (
-    <>
-      {/* <Header /> */}
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/about" element={<About />} />
-        <Route exact path="/products" element={<Products />} />
-        <Route exact path="/details/:id" element={<Details />} />
-        <Route exact path="/cart" element={<Cart />} />
-        <Route exact path="/login" element={<Login />} />
-        <Route exact path="/register" element={<Register />} />
-        <Route exact path="/profile" element={<Profile />} />
-        <Route exact path="/accountant" element={<AccountantDashboard />}>
-          <Route exact path="orders" element={<Order />} />
-          <Route exact path="new-amounts" element={<NewAmounts acc={true} />} />
-        </Route>
+  const { user } = useGlobalContext();
 
-        <Route exact path="/storekeeper" element={<StroeKeeperDashboard />}>
+  if (user.role === "storekeeper") {
+    //  Storekeeper
+    return (
+      <Routes>
+        <Route exact path="/" element={<StroeKeeperDashboard />}>
           <Route
             exact
             path="all-products"
@@ -57,7 +49,31 @@ function App() {
           <Route exact path="add-supplier" element={<AddSupplier />} />
           <Route exact path="add-brand" element={<AddBrand />} />
         </Route>
-        <Route exact path="/admin" element={<AdminDashboard />}>
+        <Route exact path="/details/:id" element={<Details admin={true} />} />
+        <Route exact path="/update" element={<UpdateInfo admin={true} />} />
+
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    );
+  }
+  if (user.role === "accountant") {
+    return (
+      <Routes>
+        {/* Accountant */}
+        <Route exact path="/" element={<AccountantDashboard />}>
+          <Route exact path="orders" element={<Order />} />
+          <Route exact path="new-amounts" element={<NewAmounts acc={true} />} />
+        </Route>
+        <Route exact path="/update" element={<UpdateInfo admin={true} />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    );
+  }
+  if (user.role === "admin") {
+    return (
+      <Routes>
+        {/* Admin */}
+        <Route exact path="/" element={<AdminDashboard />}>
           <Route exact path="all-products" element={<AdminProducts />} />
           <Route
             exact
@@ -67,8 +83,47 @@ function App() {
           <Route exact path="users" element={<Users />} />
           <Route exact path="user-orders/:id" element={<UserOrders />} />
         </Route>
+        <Route exact path="/details/:id" element={<Details admin={true} />} />
+        <Route path="*" element={<NotFound />} />
+        <Route exact path="/update" element={<UpdateInfo admin={true} />} />
       </Routes>
-      {/* <Footer /> */}
+    );
+  }
+
+  if (user.role === "user") {
+    return (
+      <>
+        <Header />
+
+        <Routes>
+          {/* //User Ath */}
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/about" element={<About />} />
+          <Route exact path="/products" element={<Products />} />
+          <Route exact path="/details/:id" element={<Details />} />
+          <Route exact path="/cart" element={<Cart />} />
+          <Route exact path="/profile" element={<Profile />} />
+          <Route exact path="/update" element={<UpdateInfo />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        <Footer />
+      </>
+    );
+  }
+  return (
+    <>
+      <Header />
+      <Routes>
+        {/* Guest */}
+        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/register" element={<Register />} />
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/about" element={<About />} />
+        <Route exact path="/products" element={<Products />} />
+        <Route exact path="/details/:id" element={<Details />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Footer />
     </>
   );
 }

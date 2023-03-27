@@ -44,7 +44,7 @@ const AddAmounts = () => {
       setError(false);
       const response = await axios.post(add_amounts_url, { ...amount, token });
       setLoading(false);
-      navigate("/storekeeper/all-product");
+      navigate("/all-products");
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -101,7 +101,7 @@ const AddAmounts = () => {
                   );
                 })}
               </select>
-              <Link to="/storekeeper/add-supplier">Add New Supplier ?</Link>
+              <Link to="/add-supplier">Add New Supplier ?</Link>
             </div>
             {supplierAuth && (
               <p style={{ color: "red", fontSize: "0.8rem" }}>

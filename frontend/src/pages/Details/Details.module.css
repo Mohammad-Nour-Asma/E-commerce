@@ -18,6 +18,9 @@
 
 .images img {
     border-radius: 10px;
+    margin: 0 auto;
+    display: block;
+    width: 400px;
 }
 
 .info {

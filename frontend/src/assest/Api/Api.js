@@ -31,3 +31,5 @@ export const make_amount_ready_url = `${domain}/api/admin/confirm`;
 export const make_amount_payment_url = `${domain}/api/accountant/confirmNewAmounts`;
 export const get_users_url = `${domain}/api/admin/users`;
 export const get_user_orders_url = `${domain}/api/admin/user/order`;
+export const update_info_url = `${domain}/api/update`;
+export const get_last_three_products_url = `${domain}/api/last/products`;

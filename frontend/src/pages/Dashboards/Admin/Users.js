@@ -53,8 +53,10 @@ const Users = () => {
           <thead className={styles.tableHeader}>
             <tr>
               <th>id</th>
+              <th>role</th>
               <th>name</th>
               <th>email</th>
+              <th>Joind At</th>
               <th></th>
             </tr>
           </thead>
@@ -63,14 +65,20 @@ const Users = () => {
               return (
                 <tr key={item.id} className={styles.tabelBody}>
                   <td>{item.id}</td>
+                  <td className={item.role !== "user" ? `${styles.gray}` : ""}>
+                    {item.role}
+                  </td>
 
                   <td>{item.name}</td>
                   <td>{item.email}</td>
+                  <td className={styles.date}>
+                    <NewDate date={item.joind_at} />
+                  </td>
 
                   <td style={{ textDecoration: "underline" }}>
                     <Link
                       state={{ name: item.name }}
-                      to={`/admin/user-orders/${item.id}`}
+                      to={`/user-orders/${item.id}`}
                     >
                       Go to user Orders
                     </Link>

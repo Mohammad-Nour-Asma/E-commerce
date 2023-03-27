@@ -78,6 +78,7 @@ const AppProvider = ({ children }) => {
         token,
         auth,
         user,
+        setUser,
         cart,
         cartdata,
         cartError,

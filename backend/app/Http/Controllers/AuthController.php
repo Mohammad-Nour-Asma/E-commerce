@@ -88,6 +88,25 @@ class AuthController extends Controller
     public function userProfile() {
         return response(["user"=> new UserResource(auth()->user())]);
     }
+    // * Update User Information.
+
+    public function update(Request $request){
+
+        // Validate the form data
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        // Hash the password
+        $validatedData['password'] = bcrypt($validatedData['password']);
+
+        // Update the user's name and password
+        $user = auth()->user();
+        $user->update($validatedData);
+        return response(['user'=>new UserResource($user)]);
+        }
+
     /**
      * Get the token array structure.
      *
@@ -103,4 +122,5 @@ class AuthController extends Controller
             'user' => new UserResource(auth()->user()),
         ]);
     }
+
 }

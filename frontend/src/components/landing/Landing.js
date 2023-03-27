@@ -8,10 +8,11 @@ const Landing = () => {
     <section className={`${styles.landing} container `}>
       <div className={styles.info}>
         <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto, at
-          sed omnis corporis doloremque possimus velit! Repudiandae nisi odit,
-          aperiam odio ducimus, obcaecati libero et quia tempora excepturi quis
-          alias?
+          A mobile shop website is an online store that specializes in selling
+          mobile devices such as smartphones, tablets, and accessories. The
+          website typically has a professional design with a user-friendly
+          interface that allows customers to browse products easily and make
+          purchases securely.
         </p>
         <Link to={"/products"} className="button">
           SHOP NOW

@@ -30,6 +30,7 @@ Route::post('/register' , [AuthController::class , 'register']);
 Route::post('/products' , [ProductController::class , 'index']);
 Route::get('/product/{product}' , [ProductController::class , 'details']);
 Route::get('/brands' , [BrandController::class , 'index']);
+Route::get('/last/products' , [ProductController::class , 'getLast']);
 
 Route::group(['middleware' => ['jwt.verify']], function() {
 
@@ -37,6 +38,7 @@ Route::group(['middleware' => ['jwt.verify']], function() {
 
    Route::post('/profile' , [AuthController::class , 'userProfile']);
    Route::post('/logout' , [AuthController::class , 'logout']);
+   Route::post('/update' , [AuthController::class , 'update']);
 
 
    //Cart

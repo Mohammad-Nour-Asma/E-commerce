@@ -40,7 +40,6 @@ const UserOrders = () => {
   };
   useEffect(() => {
     getUserOrders();
-    console.log(orders);
   }, []);
 
   return (
@@ -58,7 +57,7 @@ const UserOrders = () => {
       ) : (
         <div>
           {orders?.map((order) => {
-            return <Order key={order.item} order={order} />;
+            return <Order key={order.id} order={order} />;
           })}
         </div>
       )}

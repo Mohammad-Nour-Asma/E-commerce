@@ -16,7 +16,7 @@ import Spinner from "../../components/Spinner/Spinner";
 import { useGlobalContext } from "../../context";
 import { BsCartFill } from "react-icons/bs";
 
-const Details = () => {
+const Details = ({ admin }) => {
   const [details, setDetails] = useState({});
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -63,11 +63,17 @@ const Details = () => {
 
   return (
     <main>
-      <Path path=" Products / Mobile" />
+      {!admin && <Path path=" Products / Mobile" />}
       <div className="container">
-        <Link to="/products" className={`sub-button ${styles.back}`}>
-          Back to products
-        </Link>
+        {admin ? (
+          <Link to="/" className={`sub-button ${styles.back}`}>
+            Back to dashboard
+          </Link>
+        ) : (
+          <Link to="/products" className={`sub-button ${styles.back}`}>
+            Back to products
+          </Link>
+        )}
         <div className={styles.details}>
           {loading ? (
             <Spinner />
@@ -115,22 +121,27 @@ const Details = () => {
                   <span>Processer :</span>
                   <span>{details.processor}</span>
                 </div>
-                {auth ? (
+                {!admin && (
                   <>
-                    <IncDec counter={counter} setCounter={setCounter} />
-                    <button
-                      onClick={() => {
-                        addItemToCart();
-                      }}
-                      className="button"
-                    >
-                      Add To Cart
-                    </button>
+                    {" "}
+                    {auth ? (
+                      <>
+                        <IncDec counter={counter} setCounter={setCounter} />
+                        <button
+                          onClick={() => {
+                            addItemToCart();
+                          }}
+                          className="button"
+                        >
+                          Add To Cart
+                        </button>
+                      </>
+                    ) : (
+                      <Link to={"/login"} className="sub-button">
+                        Log In to fill your cart <BsCartFill />
+                      </Link>
+                    )}
                   </>
-                ) : (
-                  <Link to={"/login"} className="sub-button">
-                    Log In to fill your cart <BsCartFill />
-                  </Link>
                 )}
               </div>
             </>

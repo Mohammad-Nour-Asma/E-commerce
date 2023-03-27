@@ -40,11 +40,12 @@ class AccountantController extends Controller
         $newAmounts = NewAmount::find(request('newAmount_id'));
 
         if($newAmounts?->admin_checking){
-            $newAmounts->update(['accountant_checking'=>true]);
             $product =Product::find($newAmounts->product_id);
-           $product->update([
-                'amount_in_warehouse'=> $product->amount_in_warehouse + $newAmounts->amount_to_add,
-           ]);
+            $theNewAmount =  $product->amount_in_warehouse + $newAmounts->amount_to_add;
+            $product->update([
+                'amount_in_warehouse'=>$theNewAmount,
+            ]);
+            $newAmounts->update(['accountant_checking'=>true]);
            return response(['amount'=>$newAmounts]);
         }
 

@@ -1,0 +1,32 @@
+.notFound {
+    height: 100vh;
+    position: relative;
+    background-color: #eee;
+}
+
+.box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ddd;
+    padding: 3rem 4rem;
+    text-align: center;
+    border-radius: 18px;
+    box-shadow: 0 3px 15px 1px #7072c8;
+}
+
+.box p:first-child {
+    font-weight: bold;
+    font-size: var(--big-font-size);
+    letter-spacing: 3px;
+    text-shadow: 0px 1px 8px black;
+    color: lightgray;
+
+}
+
+.box p:nth-of-type(2) {
+    margin: 0rem 0 1rem;
+    font-size: var(--h2-font-size);
+    font-weight: bold;
+}

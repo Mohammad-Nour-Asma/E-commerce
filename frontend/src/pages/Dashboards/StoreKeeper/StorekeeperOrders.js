@@ -138,7 +138,7 @@ const StorekeeperOrders = () => {
                     </thead>
                     <tbody>
                       {order.order_items.map((item) => {
-                        if (!item.status) {
+                        if (!item.status && !order.ready) {
                           cantBeReady = true;
                         }
                         return (
@@ -165,7 +165,7 @@ const StorekeeperOrders = () => {
                               {item.amount_in_warehouse === 0 && (
                                 <Link
                                   state={{ product: item.product }}
-                                  to={`/storekeeper/add-amount/${item.id}`}
+                                  to={`/add-amount/${item.id}`}
                                   className={styles.button}
                                 >
                                   Add

@@ -68,7 +68,7 @@ const AddEditForm = ({
                 );
               })}
             </select>
-            <Link to={"/storekeeper/add-brand"}>Add New Brand ?</Link>
+            <Link to={"/add-brand"}>Add New Brand ?</Link>
           </div>
           <div className={formStyle.input}>
             <label htmlFor="name">Name</label>

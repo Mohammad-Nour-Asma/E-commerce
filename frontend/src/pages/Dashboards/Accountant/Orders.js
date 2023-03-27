@@ -106,7 +106,7 @@ const Orders = () => {
           {orders?.map((item) => {
             return (
               <Order
-                message='"Do You Want To Coifirm Payment ? "'
+                message="Do You Want To Coifirm Payment ? "
                 makePayment={makePayment}
                 admin={true}
                 order={item}

@@ -152,3 +152,11 @@
 .acc {
     margin: 0 1.5rem;
 }
+
+.gray {
+    color: #9E9E9E;
+}
+
+.date div {
+    text-align: center;
+}

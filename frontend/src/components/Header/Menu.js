@@ -6,7 +6,7 @@ import { HiUserAdd } from "react-icons/hi";
 import { useGlobalContext } from "../../context";
 import { CgProfile } from "react-icons/cg";
 
-const Menu = () => {
+const Menu = ({ setShowMenu, cartDataLength }) => {
   const { auth } = useGlobalContext();
 
   return (
@@ -14,32 +14,80 @@ const Menu = () => {
       {" "}
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <Link
+            onClick={() => {
+              setShowMenu((prev) => {
+                return !prev;
+              });
+            }}
+            to="/"
+          >
+            Home
+          </Link>
         </li>
         <li>
-          <Link to="/about">About</Link>
+          <Link
+            onClick={() => {
+              setShowMenu((prev) => {
+                return !prev;
+              });
+            }}
+            to="/about"
+          >
+            About
+          </Link>
         </li>
         <li>
-          <Link to="/products">Products</Link>
+          <Link
+            onClick={() => {
+              setShowMenu((prev) => {
+                return !prev;
+              });
+            }}
+            to="/products"
+          >
+            Products
+          </Link>
         </li>
       </ul>
       <div className={styles.personal}>
         {auth && (
-          <Link to="/cart">
+          <Link
+            onClick={() => {
+              setShowMenu((prev) => {
+                return !prev;
+              });
+            }}
+            to="/cart"
+          >
             Cart
             <div className={styles.cart}>
               <BsCartFill />
-              <div className={styles.num}>3</div>
+              <div className={styles.num}>{cartDataLength}</div>
             </div>
           </Link>
         )}
         {auth ? (
-          <Link to="/profile">
+          <Link
+            onClick={() => {
+              setShowMenu((prev) => {
+                return !prev;
+              });
+            }}
+            to="/profile"
+          >
             Profile
             <CgProfile />
           </Link>
         ) : (
-          <Link to="/login">
+          <Link
+            onClick={() => {
+              setShowMenu((prev) => {
+                return !prev;
+              });
+            }}
+            to="/login"
+          >
             Login
             <HiUserAdd />
           </Link>

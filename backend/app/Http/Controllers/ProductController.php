@@ -15,17 +15,13 @@ class ProductController extends Controller
 {
     //
     public function index (){
-        $products=[];
-        Product::latest()
+        $products= Product::latest()
+                ->where('amount_in_warehouse','>',0)
                 ->filter(\request(['search' , 'brand' , 'ram', 'price']))
                 ->get()
                 ->map(function ($item ){
-                    if($item->amount_in_warehouse>0)
+
                     return new ProductsBrowse($item);
-                })->each(function($item)use(&$products){
-                    if($item !== null){
-                        $products[] = $item;
-                    }
                 });
 
         return response([
@@ -123,5 +119,12 @@ class ProductController extends Controller
 
         return response(["product"=>$product]);
 
+    }
+
+    public function getLast(){
+        $product = Product::where('amount_in_warehouse','>',0)->latest()->take(3)->get()->map(function($item){
+            return new ProductsBrowse($item);
+        });
+        return response(['products'=>$product]);
     }
 }

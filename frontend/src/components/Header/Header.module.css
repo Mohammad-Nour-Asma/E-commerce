@@ -1,10 +1,12 @@
+header {
+    position: relative;
+}
+
 .header {
-
-
     align-items: center;
     background-color: #fff;
     position: relative;
-
+    z-index: 1000;
 }
 
 .header>div:first-child {
@@ -94,7 +96,7 @@
     position: absolute;
     transition: .5s ease-in-out;
     left: 0;
-    background-color: #ebebeb;
+    background-color: #eff5fa;
     width: 100%;
     border-radius: 4px;
     padding: 0.7rem;
