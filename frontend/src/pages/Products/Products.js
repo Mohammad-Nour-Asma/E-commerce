@@ -139,7 +139,7 @@ const Products = () => {
               setSearch("");
               setBrandId("");
               setPrice(4000);
-              setRam(50);
+              setRam(200);
             }}
             className={styles.clearFilters}
           >

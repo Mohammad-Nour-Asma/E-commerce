@@ -162,7 +162,7 @@ const StorekeeperOrders = () => {
                             <td>${item.total_price}</td>
 
                             <td>
-                              {item.amount_in_warehouse === 0 && (
+                              {(item.amount_in_warehouse === 0 || cantBeReady) && (
                                 <Link
                                   state={{ product: item.product }}
                                   to={`/add-amount/${item.id}`}

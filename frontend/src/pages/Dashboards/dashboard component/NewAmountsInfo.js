@@ -13,7 +13,7 @@ const NewAmountsInfo = ({
     <div className={styles.orderInfo}>
       <div>
         {" "}
-        <NewDate date={amount.date} />
+        <NewDate date={amount.created_at} />
         <div style={{ marginTop: "0.5rem" }} className={styles.user}>
           <span>Supplier name: {amount.supplier?.name}</span>
           <span style={{ margin: "0.2rem 0" }}>
@@ -26,17 +26,17 @@ const NewAmountsInfo = ({
       <div className={styles.status}>
         <span
           onClick={() => {
-            if (makePayment && !amount.accountant_checking) {
+            if (makePayment && !amount.accountant_checking && amount.admin_checking) {
               setNewAmountId(amount.id);
               setPop("open");
             }
           }}
           className={
-            makePayment && !amount.accountant_checking
+            makePayment && !amount.accountant_checking && amount.admin_checking
               ? `${styles.accountant} ${styles.false}`
               : amount.accountant_checking
-              ? `${styles.true}`
-              : `${styles.false}`
+                ? `${styles.true}`
+                : `${styles.false}`
           }
         >
           {amount.accountant_checking ? "Paid" : "Not Paid"}
@@ -52,8 +52,8 @@ const NewAmountsInfo = ({
             makeNewAmountReady && !amount.admin_checking
               ? `${styles.accountant} ${styles.false}`
               : amount.admin_checking
-              ? `${styles.true}`
-              : `${styles.false}`
+                ? `${styles.true}`
+                : `${styles.false}`
           }
         >
           {amount.admin_checking ? "Admin Checked" : "Admin Not Checked"}

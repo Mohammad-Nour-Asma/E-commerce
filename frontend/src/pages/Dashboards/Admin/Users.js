@@ -49,45 +49,51 @@ const Users = () => {
       ) : users?.length === 0 && !loading ? (
         <NoResults />
       ) : (
-        <table className={styles.table}>
-          <thead className={styles.tableHeader}>
-            <tr>
-              <th>id</th>
-              <th>role</th>
-              <th>name</th>
-              <th>email</th>
-              <th>Joind At</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {users?.map((item) => {
-              return (
-                <tr key={item.id} className={styles.tabelBody}>
-                  <td>{item.id}</td>
-                  <td className={item.role !== "user" ? `${styles.gray}` : ""}>
-                    {item.role}
-                  </td>
-
-                  <td>{item.name}</td>
-                  <td>{item.email}</td>
-                  <td className={styles.date}>
-                    <NewDate date={item.joind_at} />
-                  </td>
-
-                  <td style={{ textDecoration: "underline" }}>
-                    <Link
-                      state={{ name: item.name }}
-                      to={`/user-orders/${item.id}`}
+        <div className={styles.tableContainer}>
+          <table className={styles.table}>
+            <thead className={styles.tableHeader}>
+              <tr>
+                <th>id</th>
+                <th>role</th>
+                <th>name</th>
+                <th>email</th>
+                <th>Joind At</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {users?.map((item) => {
+                return (
+                  <tr key={item.id} className={styles.tabelBody}>
+                    <td>{item.id}</td>
+                    <td
+                      className={item.role !== "user" ? `${styles.gray}` : ""}
                     >
-                      Go to user Orders
-                    </Link>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+                      {item.role}
+                    </td>
+
+                    <td>{item.name}</td>
+                    <td>{item.email}</td>
+                    <td className={styles.date}>
+                      <NewDate date={item.joind_at} />
+                    </td>
+
+                    <td style={{ textDecoration: "underline" }}>
+                      {item.role === "user" && (
+                        <Link
+                          state={{ name: item.name }}
+                          to={`/user-orders/${item.id}`}
+                        >
+                          Go to user Orders
+                        </Link>
+                      )}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       )}
     </main>
   );
